@@ -3,6 +3,7 @@ import Navbar from "~/components/Navbar";
 import About from "~/components/page/landing/About";
 import Destinations from "~/components/page/landing/Destinations";
 import Hero from "~/components/page/landing/Hero";
+import Tours from "~/components/page/landing/Tours";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <About />
         <Destinations />
+        <Tours />
       </main>
     </>
   );
