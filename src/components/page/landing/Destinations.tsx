@@ -1,4 +1,4 @@
-import DestinationCard from "~/components/DestinationCard";
+import DestinationCard from "~/components/utility/DestinationCard";
 import Btn from "~/components/utility/Btn";
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";

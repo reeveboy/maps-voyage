@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import About from "~/components/page/landing/About";
 import Blogs from "~/components/page/landing/Blogs";
@@ -27,6 +28,7 @@ export default function Home() {
         <Blogs />
         <Cta />
         <Contact />
+        <Footer />
       </main>
     </>
   );

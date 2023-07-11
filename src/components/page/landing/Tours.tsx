@@ -1,4 +1,4 @@
-import TourCard from "~/components/TourCard";
+import TourCard from "~/components/utility/TourCard";
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";
 
