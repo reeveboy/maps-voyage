@@ -3,6 +3,7 @@ import Navbar from "~/components/Navbar";
 import About from "~/components/page/landing/About";
 import Destinations from "~/components/page/landing/Destinations";
 import Hero from "~/components/page/landing/Hero";
+import Reviews from "~/components/page/landing/Reviews";
 import Tours from "~/components/page/landing/Tours";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <About />
         <Destinations />
         <Tours />
+        <Reviews />
       </main>
     </>
   );
