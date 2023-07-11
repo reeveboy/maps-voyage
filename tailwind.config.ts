@@ -10,6 +10,9 @@ export default {
         primary: "#1B9789",
         white: "#FFFFFF",
       },
+      fontFamily: {
+        cursive: ["Shadows Into Light", "cursive"],
+      },
     },
   },
   plugins: [],
