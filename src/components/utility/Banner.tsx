@@ -1,5 +1,6 @@
 interface BannerProps {
   title: string;
+  img: string;
 }
 
 export default function Banner(props: BannerProps) {
@@ -7,7 +8,7 @@ export default function Banner(props: BannerProps) {
     <div className="relative w-full bg-black/60">
       <img
         className="absolute h-full w-full object-cover mix-blend-overlay"
-        src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=903&q=80"
+        src={props.img}
         alt=""
       />
       <div className="relative flex items-center justify-center px-4 py-12">
