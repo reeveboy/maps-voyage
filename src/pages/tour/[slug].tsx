@@ -21,6 +21,7 @@ export interface Tour {
   groupSize: string;
   cartegory: string;
   location: string;
+  cardImage: string;
   images: string[];
   overview: string;
   tourPlan: TourPlan[];
@@ -34,6 +35,8 @@ const TOUR: Tour = {
   groupSize: "25",
   cartegory: "adventure",
   location: "Andaman Sea",
+  cardImage:
+    "https://images.unsplash.com/photo-1538826421747-8fc0690ae387?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
   images: [
     "https://images.unsplash.com/photo-1538826421747-8fc0690ae387?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
     "https://images.unsplash.com/photo-1640618428217-30131ccdfd7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",

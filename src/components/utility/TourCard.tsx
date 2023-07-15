@@ -5,6 +5,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import { Tour } from "~/pages/tour/[slug]";
 
 interface TourCardProps {
@@ -14,7 +15,13 @@ interface TourCardProps {
 export default function TourCard({ tour }: TourCardProps) {
   return (
     <div className="my-2 w-full bg-white shadow-md">
-      <img className="h-60 w-full object-cover" src={tour.images[0]} alt="" />
+      <Image
+        className="h-60 w-full object-cover"
+        src={tour.cardImage}
+        alt={tour.tourName}
+        width={1000}
+        height={1000}
+      />
       <div className="mt-2 flex flex-col p-4">
         <div className="flex">
           <FontAwesomeIcon icon={faStar} className="h-4 text-primary" />
