@@ -5,16 +5,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-export interface Tour {
-  tourName: string;
-  stars: number;
-  description: string;
-  days: number;
-  groupSize: string;
-  location: string;
-  imgUrl: string;
-}
+import { Tour } from "~/pages/tour/[slug]";
 
 interface TourCardProps {
   tour: Tour;
@@ -23,7 +14,7 @@ interface TourCardProps {
 export default function TourCard({ tour }: TourCardProps) {
   return (
     <div className="my-2 w-full bg-white shadow-md">
-      <img className="h-60 w-full object-cover" src={tour.imgUrl} alt="" />
+      <img className="h-60 w-full object-cover" src={tour.images[0]} alt="" />
       <div className="mt-2 flex flex-col p-4">
         <div className="flex">
           <FontAwesomeIcon icon={faStar} className="h-4 text-primary" />

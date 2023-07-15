@@ -41,7 +41,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
-      <form className="flex flex-col bg-white p-4">
+      <form className="flex flex-col bg-white p-4 font-light">
         <input
           className="bg-slate-200 px-7 py-5 text-lg text-dark"
           type="text"

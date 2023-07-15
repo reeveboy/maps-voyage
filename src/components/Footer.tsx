@@ -37,13 +37,13 @@ export default function Footer() {
           <p className="text-md mt-2 font-light leading-tight text-slate-600">
             Sign Up to receive news, updates and offers on our tours{" "}
           </p>
-          <div className="mt-2 flex">
+          <div className="mt-2 flex font-light">
             <input
-              className="border-2 border-slate-200 px-7 py-5 text-dark"
+              className="grow border-2 border-slate-200 px-4 py-4 text-lg text-dark"
               type="text"
               placeholder="Your Name"
             />
-            <button className="ml-2 bg-primary px-4 text-sm uppercase text-light shadow-md">
+            <button className="text-md ml-2 bg-primary px-4 uppercase text-light shadow-md">
               Sign Up Now!
             </button>
           </div>

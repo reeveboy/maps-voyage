@@ -1,6 +1,6 @@
 export default function Form() {
   return (
-    <form className="flex flex-col bg-white p-4">
+    <form className="flex flex-col bg-white p-4 font-light">
       <p className="text-5xl leading-[90%] text-dark">
         Have any Question? Feel free to contact with us.
       </p>
