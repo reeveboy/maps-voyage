@@ -4,9 +4,8 @@ import { Disclosure, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
-const navigation = [
+export const navigation = [
   { name: "Home", href: "/" },
   { name: "Destinations", href: "/destinations" },
   { name: "Tours", href: "/tours" },
