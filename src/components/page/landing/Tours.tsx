@@ -1,9 +1,11 @@
-import TourCard from "~/components/utility/TourCard";
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";
 import { Tour } from "~/pages/tour/[slug]";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 
-const TOURS: Tour[] = [
+export const TOURS: Tour[] = [
   {
     tourName: "The Sea Explorer",
     stars: 4.7,
@@ -14,9 +16,9 @@ const TOURS: Tour[] = [
     cartegory: "adventure",
     location: "Andaman Sea",
     cardImage:
-      "https://images.unsplash.com/photo-1538826421747-8fc0690ae387?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+      "https://images.unsplash.com/photo-1621521089957-5c7b0cd9bf92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
     images: [
-      "https://images.unsplash.com/photo-1538826421747-8fc0690ae387?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+      "https://images.unsplash.com/photo-1621521089957-5c7b0cd9bf92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
       "https://images.unsplash.com/photo-1640618428217-30131ccdfd7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
       "https://images.unsplash.com/photo-1640718835374-6116a99c6e6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80",
       "https://images.unsplash.com/photo-1641719320002-743bc0384e0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
@@ -55,9 +57,9 @@ const TOURS: Tour[] = [
     cartegory: "adventure",
     location: "Himachal Pradesh",
     cardImage:
-      "https://images.unsplash.com/photo-1658816849623-57ff49aee765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1573709814975-c1778ce12926?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
     images: [
-      "https://images.unsplash.com/photo-1658816849623-57ff49aee765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1573709814975-c1778ce12926?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
     ],
   },
 ];
@@ -71,6 +73,56 @@ export default function Tours() {
         {TOURS.map((tour, index) => (
           <TourCard key={index} tour={tour} />
         ))}
+      </div>
+    </div>
+  );
+}
+
+interface TourCardProps {
+  tour: Tour;
+}
+
+function TourCard({ tour }: TourCardProps) {
+  return (
+    <div className="my-2 flex min-w-[300px] flex-col bg-white shadow-md">
+      <Image
+        className="w-full object-cover"
+        src={tour.cardImage}
+        alt={tour.tourName}
+        width={1000}
+        height={1000}
+      />
+      <div className="flex h-full flex-col p-4">
+        <div className="flex items-end">
+          <FontAwesomeIcon
+            icon={faStar}
+            className="h-4 w-4 text-primary md:h-5 md:w-5"
+          />
+          <p className="ml-1 text-xs font-light text-slate-500">
+            {tour.stars} Superb
+          </p>
+        </div>
+        <p className="mt-4 text-xl leading-[95%] text-dark">{tour.tourName}</p>
+        <p className="text-lg font-light text-slate-500">{tour.location}</p>
+        {/* <p className="text-md mt-1 line-clamp-3 font-light leading-[120%] text-slate-500 md:mt-4 md:line-clamp-4">
+          {tour.description}
+        </p> */}
+        <div className="mt-auto">
+          <div className="mt-4 h-[1px] bg-slate-500"></div>
+          <div className="mt-4 flex justify-center">
+            <div className="mr-2 flex items-center text-slate-500 md:mr-3">
+              <FontAwesomeIcon icon={faClock} className="mr-1 h-3 w-3" />
+
+              <p className="text-xs font-light">{tour.days} Days</p>
+            </div>
+
+            <div className="mr-2 flex items-center text-slate-500 md:mr-3">
+              <FontAwesomeIcon icon={faUser} className="mr-1 h-3 w-3" />
+
+              <p className="text-xs font-light">{tour.groupSize}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ export interface Tour {
   tourName: string;
   stars: number;
   days: number;
-  description: string;
+  description?: string;
   groupSize: string;
   cartegory?: string;
   location: string;

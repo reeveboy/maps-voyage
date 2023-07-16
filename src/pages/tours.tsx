@@ -20,9 +20,15 @@ export default function Tours() {
           img="https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=903&q=80"
           title="Tours"
         />
-        <AllTours />
-        <SearchBox />
-        <FilterBox />
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="md:col-span-2">
+            <AllTours />
+          </div>
+          <div className="flex flex-col">
+            <SearchBox />
+            <FilterBox />
+          </div>
+        </div>
         <Footer />
       </main>
     </>

@@ -1,38 +1,14 @@
-import TourCard, { Tour } from "~/components/utility/TourCard";
-
-const TOURS: Tour[] = [
-  {
-    tourName: "The Sea Explorer",
-    stars: 4.7,
-    days: 3,
-    description: "Exploring the jaw-dropping Andaman coast by foot and by boat",
-    groupSize: "25",
-    location: "Andaman Sea",
-    imgUrl:
-      "https://images.unsplash.com/photo-1538826421747-8fc0690ae387?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
-  },
-  {
-    tourName: "Shimla Mountain Tour",
-    stars: 4.4,
-    days: 3,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit luctus",
-    groupSize: "12",
-    location: "Himachal Pradesh",
-    imgUrl:
-      "https://images.unsplash.com/photo-1593183981460-e9276b5a5587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=951&q=80",
-  },
-  {
-    tourName: "Goan Beach Adventure",
-    stars: 4.9,
-    days: 3,
-    description: "ullam- ut elit tellus, luctus nec ullam elit tellpus.",
-    groupSize: "20",
-    location: "Goa",
-    imgUrl:
-      "https://images.unsplash.com/photo-1587922546307-776227941871?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
-  },
-];
+import { Tour } from "~/pages/tour/[slug]";
+import { TOURS } from "../landing/Tours";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBookmark,
+  faClock,
+  faLocationDot,
+  faStar,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function AllTours() {
   return (
@@ -44,6 +20,77 @@ export default function AllTours() {
         {TOURS.map((tour, idx) => (
           <TourCard tour={tour} key={idx} />
         ))}
+      </div>
+    </div>
+  );
+}
+
+interface TourCardProps {
+  tour: Tour;
+}
+
+function TourCard({ tour }: TourCardProps) {
+  return (
+    <div className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3">
+      <Image
+        className="h-64 w-full object-cover"
+        src={tour.cardImage}
+        alt={tour.tourName}
+        width={1000}
+        height={1000}
+      />
+      <div className="flex h-full flex-col justify-center p-6 md:col-span-2">
+        <div className="flex items-end justify-between">
+          <div className="flex items-center">
+            <FontAwesomeIcon icon={faStar} className="h-6 w-6 text-primary" />
+            <p className="text-md ml-1 font-light text-slate-500">
+              {tour.stars} Superb
+            </p>
+          </div>
+        </div>
+        <p className="mt-4 text-3xl leading-[95%] text-slate-700">
+          {tour.tourName}
+        </p>
+        <p className="text-xl font-light text-slate-500">{tour.location}</p>
+        {/* <p className="text-md line-clamp-2 hidden font-light leading-[120%] text-slate-500 md:line-clamp-4 md:block">
+          {tour.description}
+        </p> */}
+        <div className="mt-4 ">
+          <div className="h-[1px] bg-slate-500"></div>
+          <div className="mt-4 flex justify-center">
+            <div className="mr-4 flex items-center">
+              <FontAwesomeIcon
+                icon={faClock}
+                className="mr-1 h-5 w-5 text-primary"
+              />
+              <p className="text-md font-light text-slate-500">
+                {tour.days} Days
+              </p>
+            </div>
+
+            <div className="mr-4 flex items-center">
+              <FontAwesomeIcon
+                icon={faUser}
+                className="mr-1 h-5 w-5 text-primary"
+              />
+
+              <p className="text-md font-light text-slate-500">
+                {tour.groupSize}
+              </p>
+            </div>
+
+            <div className="flex items-center">
+              <FontAwesomeIcon
+                icon={faBookmark}
+                className="mr-1 h-5 w-5 text-primary"
+              />
+
+              <p className="text-md font-light capitalize text-slate-500">
+                {tour.cartegory}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
