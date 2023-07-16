@@ -25,13 +25,11 @@ export default function Footer() {
           <p className="text-3xl text-primary">Links</p>
           <div className="mt-2 flex flex-col">
             {navigation.map((link, idx) => (
-              <Link
-                key={idx}
-                className="text-lg text-slate-600"
-                href={link.href}
-              >
-                <span>{link.name}</span>
-              </Link>
+              <div key={idx}>
+                <Link className="text-lg text-slate-600" href={link.href}>
+                  {link.name}
+                </Link>
+              </div>
             ))}
           </div>
         </div>

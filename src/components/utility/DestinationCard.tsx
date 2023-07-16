@@ -6,7 +6,6 @@ interface DestinationCardProps {
   destinationName: string;
   tours: number;
   imgUrl: string;
-  variant?: "vertical" | "horizontal" | "square";
   index: number;
 }
 
@@ -14,14 +13,13 @@ export default function DestinationCard({
   destinationName,
   imgUrl,
   tours,
-  variant,
   index,
 }: DestinationCardProps) {
   return (
     <div
       className={classNames(
         "relative h-52 w-full bg-black/60",
-        index == 0 || index == 1
+        index == 0 || index == 1 || index == 5 || index == 6
           ? "md:row-span-2 md:h-[500px]"
           : "md:col-span-2 md:h-full"
       )}

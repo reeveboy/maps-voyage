@@ -1,6 +1,12 @@
 import DestinationCard from "~/components/utility/DestinationCard";
 
-const DESTINATIONS = [
+type Destination = {
+  destinationName: string;
+  tours: number;
+  imgUrl: string;
+};
+
+const DESTINATIONS: Destination[] = [
   {
     destinationName: "Jaipur",
     tours: 5,
@@ -25,6 +31,7 @@ const DESTINATIONS = [
     imgUrl:
       "https://images.unsplash.com/photo-1579317344982-256c49ab1e0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
   },
+
   {
     destinationName: "Leh Ladakh",
     tours: 6,
@@ -47,20 +54,15 @@ const DESTINATIONS = [
     destinationName: "Sikkim",
     tours: 3,
     imgUrl:
-      "https://images.unsplash.com/photo-1562413181-9013f9846bff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=364&q=80",
+      "https://images.unsplash.com/photo-1585914285280-72bae40d4b3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
   },
 ];
 
 export default function AllDestinations() {
   return (
-    <div className="flex flex-col p-4">
-      {DESTINATIONS.map((destination, idx) => (
-        <DestinationCard
-          destinationName={destination.destinationName}
-          imgUrl={destination.imgUrl}
-          tours={destination.tours}
-          key={idx}
-        />
+    <div className="grid grid-cols-1 grid-rows-1 gap-2 p-4 md:grid-cols-4 md:grid-rows-2">
+      {DESTINATIONS.map((destination, index) => (
+        <DestinationCard index={index} {...destination} />
       ))}
     </div>
   );

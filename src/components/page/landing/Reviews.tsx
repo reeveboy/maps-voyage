@@ -1,5 +1,6 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";
 
@@ -56,16 +57,22 @@ const Review = ({ date, name, rating, review, img }: ReviewProps) => {
   return (
     <div className="flex w-full flex-col rounded-lg bg-white px-8 py-6 shadow-lg md:max-w-xs">
       <div className="flex items-center">
-        <img
+        <Image
           className="mr-2 h-14 w-14 rounded-full object-cover"
           src={img}
           alt=""
+          width={1000}
+          height={1000}
         />
         <div className="flex flex-col">
           <p className="text-2xl text-primary">{name}</p>
           <div className="flex h-4 text-slate-600">
             {[...Array(rating)].map((_, index) => (
-              <FontAwesomeIcon className="mr-1 h-full" icon={faStar} />
+              <FontAwesomeIcon
+                key={index}
+                className="mr-1 h-full"
+                icon={faStar}
+              />
             ))}
           </div>
         </div>
