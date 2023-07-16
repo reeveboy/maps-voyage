@@ -19,12 +19,12 @@ export interface Tour {
   days: number;
   description: string;
   groupSize: string;
-  cartegory: string;
+  cartegory?: string;
   location: string;
   cardImage: string;
   images: string[];
-  overview: string;
-  tourPlan: TourPlan[];
+  overview?: string;
+  tourPlan?: TourPlan[];
 }
 
 const TOUR: Tour = {

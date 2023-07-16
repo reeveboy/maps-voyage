@@ -25,7 +25,7 @@ export default function Home() {
         <Destinations />
         <Tours />
         <Reviews />
-        <Blogs />
+        {/* <Blogs /> */}
         <Cta />
         <Contact />
         <Footer />

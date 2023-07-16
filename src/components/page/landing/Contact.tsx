@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Contact() {
   return (
-    <div className="my-12 flex w-full flex-col">
-      <div className="relative w-full bg-black/60">
+    <div className="my-12 grid w-full grid-cols-1 gap-4 md:mx-auto md:max-w-5xl md:grid-cols-3">
+      <div className="relative w-full bg-black/60 md:col-span-1">
         <img
           className="absolute h-full w-full object-cover mix-blend-overlay"
           src="/images/diver.jpg"
@@ -41,36 +41,38 @@ export default function Contact() {
           </div>
         </div>
       </div>
-      <form className="flex flex-col bg-white p-4 font-light">
-        <input
-          className="bg-slate-200 px-7 py-5 text-lg text-dark"
-          type="text"
-          placeholder="Your Name"
-        />
-        <input
-          className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
-          type="text"
-          placeholder="Phone Number"
-        />
-        <input
-          className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
-          type="text"
-          placeholder="Subject"
-        />
-        <textarea
-          className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
-          rows={4}
-          placeholder="Your Message"
-        />
-        <button className="mt-2 bg-primary px-12 py-3 text-lg text-light shadow-md">
-          Send Message
-        </button>
-      </form>
+      <div className="bg-white px-4 md:col-span-2 md:flex md:items-center md:justify-center md:px-8">
+        <form className="grid w-full grid-cols-1 gap-2 font-light md:grid-cols-2">
+          <input
+            className="w-full bg-slate-200 px-7 py-5 text-lg text-slate-600"
+            type="text"
+            placeholder="Your Name"
+          />
+          <input
+            className="w-full bg-slate-200 px-7 py-5 text-lg text-slate-600"
+            type="text"
+            placeholder="Email Address"
+          />
+          <input
+            className="w-full bg-slate-200 px-7 py-5 text-lg text-slate-600"
+            type="text"
+            placeholder="Phone Number"
+          />
+          <input
+            className="w-full bg-slate-200 px-7 py-5 text-lg text-slate-600"
+            type="text"
+            placeholder="Subject"
+          />
+          <textarea
+            className="w-full bg-slate-200 px-7 py-5 text-lg text-slate-600 md:col-span-2"
+            rows={4}
+            placeholder="Your Message"
+          />
+          <button className="w-full bg-primary px-12 py-3 text-lg text-light shadow-md">
+            Send Message
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import H3 from "~/components/utility/H3";
 
 export default function About() {
   return (
-    <div className="my-12 flex flex-col px-4">
+    <div className="my-12 grid grid-cols-1 px-4 md:mx-auto md:max-w-6xl md:grid-cols-2 md:gap-4 md:px-8">
       <div className="grid-col-1 grid gap-2">
         <div className="flex w-full justify-between">
           <Image

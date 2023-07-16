@@ -8,7 +8,8 @@ const TOURS: Tour[] = [
     tourName: "The Sea Explorer",
     stars: 4.7,
     days: 3,
-    description: "Exploring the jaw-dropping Andaman coast by foot and by boat",
+    description:
+      "Exploring the jaw-dropping Andaman coast by foot and by boat.",
     groupSize: "25",
     cartegory: "adventure",
     location: "Andaman Sea",
@@ -44,15 +45,32 @@ const TOURS: Tour[] = [
       },
     ],
   },
+  {
+    tourName: "The Himalayan Adventure Trek",
+    stars: 4.3,
+    days: 10,
+    description:
+      "Challenge yourself as you summit lofty peaks and witness panoramic views that will leave you awestruck.",
+    groupSize: "15",
+    cartegory: "adventure",
+    location: "Himachal Pradesh",
+    cardImage:
+      "https://images.unsplash.com/photo-1658816849623-57ff49aee765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1658816849623-57ff49aee765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    ],
+  },
 ];
 
 export default function Tours() {
   return (
-    <div className="my-12 flex flex-col px-4">
+    <div className="my-12 flex flex-col px-4 md:mx-auto md:max-w-6xl">
       <H3 title="FEATURED TOURS" />
       <H2>Most Popular Tours</H2>
-      <div className="mt-4 flex">
-        <TourCard tour={TOURS[0]!} />
+      <div className="mt-4 flex gap-2 overflow-hidden">
+        {TOURS.map((tour, index) => (
+          <TourCard key={index} tour={tour} />
+        ))}
       </div>
     </div>
   );
