@@ -1,9 +1,10 @@
+import Image from "next/image";
 import H3 from "~/components/utility/H3";
 
 export default function Virtures() {
   return (
-    <div className="my-6 flex flex-col p-4">
-      <div className="flex flex-col">
+    <div className="flex flex-col gap-8 p-4 md:p-8">
+      <div className="flex flex-col items-center gap-4 md:flex-row">
         <div className="flex flex-col">
           <div className="flex flex-col">
             <div className="flex items-baseline">
@@ -46,14 +47,16 @@ export default function Virtures() {
           </div>
         </div>
 
-        <img
-          className="mt-4 w-full object-cover"
+        <Image
+          className="h-96 w-96 object-cover"
           src="https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80"
-          alt=""
+          alt="Virtues 1"
+          width={464}
+          height={464}
         />
       </div>
 
-      <div className="mt-6 flex flex-col">
+      <div className="flex flex-col items-center gap-4 md:flex-row-reverse">
         <div className="flex flex-col">
           <div className="flex flex-col">
             <div className="flex items-baseline">
@@ -97,10 +100,12 @@ export default function Virtures() {
           </div>
         </div>
 
-        <img
-          className="mt-4 w-full object-cover"
+        <Image
+          className="h-96 w-96 object-cover"
           src="https://images.unsplash.com/photo-1511298341002-15d91b5d09b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
-          alt=""
+          alt="Virtues 2"
+          width={435}
+          height={435}
         />
       </div>
     </div>

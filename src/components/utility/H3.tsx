@@ -9,7 +9,7 @@ export default function H3(props: propTypes) {
   return (
     <div
       className={classNames(
-        "flex flex-col",
+        "flex flex-col md:flex-row md:items-center md:gap-3",
         props.variant == "centered" ? "items-center" : ""
       )}
     >

@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 export default function Message() {
   return (
-    <div className="my-4 p-6">
-      <div className="flex flex-col justify-center bg-white p-6 shadow-md">
+    <div className="p-6">
+      <div className="mx-auto flex max-w-2xl flex-col justify-center bg-white p-6 shadow-md">
         <div className="flex flex-col">
           <span className="text-5xl text-dark">"</span>
           <p className="px-2 text-center text-xl font-light leading-[130%] text-slate-600">
@@ -14,10 +16,12 @@ export default function Message() {
           <span className="ml-auto mt-2 text-5xl text-dark">"</span>
         </div>
         <div className="flex items-center justify-center">
-          <img
+          <Image
             className="h-20 w-20 rounded-full object-cover"
             src="https://images.unsplash.com/flagged/photo-1595514191830-3e96a518989b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
-            alt=""
+            alt="Sarvesh Chavan"
+            width={387}
+            height={387}
           />
           <div className="ml-4 flex flex-col font-light">
             <p className="text-xl text-slate-600">Sarvesh Chavan</p>

@@ -1,6 +1,7 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
+import Image from "next/image";
 
 interface DestinationCardProps {
   destinationName: string;
@@ -24,10 +25,12 @@ export default function DestinationCard({
           : "md:col-span-2 md:h-full"
       )}
     >
-      <img
+      <Image
         className="absolute h-full w-full object-cover mix-blend-overlay"
         src={imgUrl}
         alt={destinationName}
+        width={1000}
+        height={1000}
       />
       <div className="relative flex h-full items-end justify-between p-4">
         <div>
