@@ -1,36 +1,36 @@
 export default function BookForm() {
   return (
-    <div className="mb-8 px-4">
+    <div className="">
       <div className="flex flex-col bg-white p-8">
-        <p className="text-3xl font-light text-dark">Book This Tour</p>
-        <form className="flex flex-col font-light">
+        <p className="mb-2 text-3xl font-light text-dark">Book This Tour</p>
+        <form className="flex flex-col gap-2 font-light">
           <input
-            className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
+            className="text-md w-full bg-slate-200 px-5 py-3 text-slate-600"
             type="text"
             placeholder="Your Name"
           />
           <input
-            className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
+            className="text-md w-full bg-slate-200 px-5 py-3 text-slate-600"
             type="text"
             placeholder="Email Address"
           />
           <input
-            className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
+            className="text-md w-full bg-slate-200 px-5 py-3 text-slate-600"
             type="text"
             placeholder="Phone Number"
           />
           <input
-            className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
+            className="text-md w-full bg-slate-200 px-5 py-3 text-slate-600"
             type="text"
             placeholder="Date"
           />
           <input
-            className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
+            className="text-md w-full bg-slate-200 px-5 py-3 text-slate-600"
             type="text"
             placeholder="Tickets"
           />
           <textarea
-            className="mt-2 bg-slate-200 px-7 py-5 text-lg text-dark"
+            className="text-md w-full bg-slate-200 px-5 py-3 text-slate-600"
             rows={4}
             placeholder="Your Message"
           />

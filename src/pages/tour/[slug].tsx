@@ -84,10 +84,14 @@ export default function TourPage() {
       </Head>
       <main>
         <Navbar />
-        <Hero tour={TOUR} />
-        <Carousel images={TOUR.images} />
-        <Overview tour={TOUR} />
-        <BookForm />
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 p-4 md:grid-cols-3">
+          <div className="flex flex-col gap-4 md:col-span-2">
+            <Hero tour={TOUR} />
+            <Carousel images={TOUR.images} />
+            <Overview tour={TOUR} />
+          </div>
+          <BookForm />
+        </div>
         <Footer />
       </main>
     </>
