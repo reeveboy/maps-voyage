@@ -19,15 +19,15 @@ export default function Hero() {
         src="https://images.unsplash.com/photo-1682687981807-35e55307a7bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
         alt=""
       />
-      <div className="relative flex flex-col p-6">
+      <div className="relative flex max-w-md flex-col gap-6 p-8">
         <div className="flex flex-col">
-          <p className="h-[2px] w-16 bg-primary"></p>
-          <h3 className="text-3xl uppercase tracking-wider text-primary">
+          <p className="h-[2px] w-16 bg-amber-400"></p>
+          <h3 className="text-lg uppercase tracking-wider text-amber-400">
             Reach Us At
           </h3>
         </div>
 
-        <div className="mt-6 flex flex-col">
+        <div className="flex flex-col">
           <div className="flex items-center rounded-lg bg-white/20 px-6 py-4">
             <div>
               <FontAwesomeIcon
@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-6 flex">
+        <div className="flex">
           <div className="grid h-14 w-14 place-items-center rounded-full bg-light/60 ">
             <FontAwesomeIcon className="h-6 text-dark" icon={faFacebook} />
           </div>

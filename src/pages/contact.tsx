@@ -14,8 +14,10 @@ export default function Contact() {
       </Head>
       <main>
         <Navbar />
-        <Hero />
-        <Form />
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+          <Hero />
+          <Form />
+        </div>
         <Footer />
       </main>
     </>
