@@ -17,8 +17,11 @@ const DESTINATION = {
   Shimla, with its timeless beauty and serene ambiance, promises an escape from the chaotic world into a realm of tranquility and natural splendor. Prepare to be captivated by the charm of this mountain retreat, leaving with a heart full of cherished memories and a longing to return again.
   `,
   images: [
-    "https://images.unsplash.com/photo-1609948543911-7f01ff385be5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=770&q=80",
-    "https://images.unsplash.com/photo-1609232530947-0aeb23338a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80",
+    "https://images.unsplash.com/photo-1589564972271-05f2cf7e772f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1626621326088-dda793924b39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80",
+    "https://images.unsplash.com/photo-1593183981460-e9276b5a5587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=951&q=80",
+    "https://images.unsplash.com/photo-1619417889956-c701044fed86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80",
+    "https://images.unsplash.com/photo-1609948544385-c52ee3564bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=858&q=80",
   ],
 };
 
@@ -37,9 +40,13 @@ export default function DestinationPage() {
           img="https://images.unsplash.com/photo-1626621326300-2841cc0b346b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80"
           title={DESTINATION.name}
         />
-        <Description description={DESTINATION.description} />
-        <ImageCarousel images={DESTINATION.images} />
-        <FeaturedTours />
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 p-4 md:grid-cols-3">
+          <div className="flex flex-col gap-4 md:col-span-2">
+            <Description description={DESTINATION.description} />
+            <ImageCarousel images={DESTINATION.images} />
+          </div>
+          <FeaturedTours />
+        </div>
         <Footer />
       </main>
     </>

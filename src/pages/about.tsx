@@ -16,8 +16,10 @@ export default function About() {
       <main>
         <Navbar />
         <Hero />
-        <Virtures />
-        <Message />
+        <div className="mx-auto max-w-7xl">
+          <Virtures />
+          <Message />
+        </div>
         <Footer />
       </main>
     </>

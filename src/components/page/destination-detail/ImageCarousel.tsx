@@ -4,7 +4,7 @@ interface ImageCarouselProps {
 
 export default function ImageCarousel({ images }: ImageCarouselProps) {
   return (
-    <div className="my-4 flex">
+    <div className="flex overflow-hidden">
       {images.map((image, index) => (
         <img
           key={index}
