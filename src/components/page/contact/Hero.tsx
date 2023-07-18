@@ -9,15 +9,17 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import H3 from "~/components/utility/H3";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <div className="relative bg-black/60">
-      <img
+      <Image
         className="absolute h-full w-full object-cover mix-blend-overlay"
         src="https://images.unsplash.com/photo-1682687981807-35e55307a7bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
         alt=""
+        width={1920}
+        height={1080}
       />
       <div className="relative flex max-w-md flex-col gap-6 p-8">
         <div className="flex flex-col md:flex-row md:items-center md:gap-2">

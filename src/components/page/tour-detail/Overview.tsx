@@ -1,4 +1,4 @@
-import { Tour } from "~/pages/tour/[slug]";
+import type { Tour } from "~/pages/tour/[slug]";
 
 interface OverviewProps {
   tour: Tour;
@@ -15,7 +15,7 @@ export default function Overview({ tour }: OverviewProps) {
       </div>
 
       <div className="mt-8 flex flex-col gap-8">
-        {tour.tourPlan!.map((plan, index) => (
+        {tour.tourPlan?.map((plan, index) => (
           <div key={index} className="flex gap-4 md:gap-6">
             <div className="flex flex-col items-center">
               <div className="grid h-16 w-16 place-items-center rounded-full bg-primary text-xl text-light">

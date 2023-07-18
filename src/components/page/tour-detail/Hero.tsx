@@ -6,8 +6,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tour } from "~/pages/tour/[slug]";
-import Carousel from "./Carousel";
+import type { Tour } from "~/pages/tour/[slug]";
 
 interface HeroProps {
   tour: Tour;

@@ -1,9 +1,14 @@
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";
-import { Tour } from "~/pages/tour/[slug]";
+import type { Tour } from "~/pages/tour/[slug]";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faStar, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBookmark,
+  faClock,
+  faStar,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import Carousel from "react-multi-carousel";
 
 export const TOURS: Tour[] = [
@@ -167,13 +172,27 @@ function TourCard({ tour }: TourCardProps) {
           <div className="mt-4 h-[1px] bg-slate-500"></div>
           <div className="mt-4 flex justify-center">
             <div className="mr-2 flex items-center text-slate-500 md:mr-3">
-              <FontAwesomeIcon icon={faClock} className="mr-1 h-4 w-4" />
+              <FontAwesomeIcon
+                icon={faClock}
+                className="mr-1 h-4 w-4 text-primary"
+              />
               <p className="text-xs font-light">{tour.days} Days</p>
             </div>
 
             <div className="mr-2 flex items-center text-slate-500 md:mr-3">
-              <FontAwesomeIcon icon={faUser} className="mr-1 h-4 w-4" />
+              <FontAwesomeIcon
+                icon={faUser}
+                className="mr-1 h-4 w-4 text-primary"
+              />
               <p className="text-xs font-light">{tour.groupSize}</p>
+            </div>
+
+            <div className="mr-2 flex items-center capitalize text-slate-500 md:mr-3">
+              <FontAwesomeIcon
+                icon={faBookmark}
+                className="mr-1 h-4 w-4 text-primary"
+              />
+              <p className="text-xs font-light">{tour.cartegory}</p>
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import H3 from "~/components/utility/H3";
 
 export default function Virtures() {
   return (
@@ -19,8 +18,8 @@ export default function Virtures() {
               affordable price.
             </p>
             <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
-              We understand that exploring the world shouldn't be limited to a
-              privileged few, which is why we strive to make our services
+              We understand that exploring the world shouldn&apos;t be limited
+              to a privileged few, which is why we strive to make our services
               accessible to everyone.
             </p>
             <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
@@ -38,11 +37,11 @@ export default function Virtures() {
               </h3>
             </div>
             <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
-              Whether it's exploring the untouched beauty of remote islands,
-              immersing in the vibrant cultures of local communities, or
-              embarking on thrilling adventures in unexplored landscapes, we are
-              dedicated to providing you with unique and memorable experiences
-              that will stay with you for a lifetime.
+              Whether it&apos;s exploring the untouched beauty of remote
+              islands, immersing in the vibrant cultures of local communities,
+              or embarking on thrilling adventures in unexplored landscapes, we
+              are dedicated to providing you with unique and memorable
+              experiences that will stay with you for a lifetime.
             </p>
           </div>
         </div>
@@ -67,7 +66,7 @@ export default function Virtures() {
             </div>
             <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
               We understand that every traveler is unique, with distinct
-              preferences and desires. That's why we take a personalized
+              preferences and desires. That&apos;s why we take a personalized
               approach to crafting your travel itinerary.
             </p>
             <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">

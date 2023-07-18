@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import Description from "~/components/page/destination-detail/Description";
@@ -26,7 +25,6 @@ const DESTINATION = {
 };
 
 export default function DestinationPage() {
-  const router = useRouter();
   return (
     <>
       <Head>

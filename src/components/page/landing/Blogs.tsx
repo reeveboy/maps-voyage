@@ -1,10 +1,6 @@
-import {
-  faComments,
-  faPerson,
-  faUserNinja,
-  faUserTie,
-} from "@fortawesome/free-solid-svg-icons";
+import { faComments, faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";
 
@@ -24,9 +20,11 @@ const BlogCard = () => {
   return (
     <div className="flex flex-col">
       <div className="w-full">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1538826421747-8fc0690ae387?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
           alt=""
+          width={1000}
+          height={1000}
         />
       </div>
       <div className="flex flex-col bg-white p-4">

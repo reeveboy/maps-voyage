@@ -1,11 +1,10 @@
-import { Tour } from "~/pages/tour/[slug]";
+import type { Tour } from "~/pages/tour/[slug]";
 import { TOURS } from "../landing/Tours";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
   faClock,
-  faLocationDot,
   faStar,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -57,7 +56,7 @@ function TourCard({ tour }: TourCardProps) {
         </p> */}
         <div className="mt-4 ">
           <div className="h-[1px] bg-slate-500"></div>
-          <div className="mt-4 flex justify-center">
+          <div className="mt-4 flex justify-center md:justify-start">
             <div className="mr-4 flex items-center">
               <FontAwesomeIcon
                 icon={faClock}
@@ -73,7 +72,6 @@ function TourCard({ tour }: TourCardProps) {
                 icon={faUser}
                 className="mr-1 h-5 w-5 text-primary"
               />
-
               <p className="text-md font-light text-slate-500">
                 {tour.groupSize}
               </p>
@@ -84,7 +82,6 @@ function TourCard({ tour }: TourCardProps) {
                 icon={faBookmark}
                 className="mr-1 h-5 w-5 text-primary"
               />
-
               <p className="text-md font-light capitalize text-slate-500">
                 {tour.cartegory}
               </p>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface BannerProps {
   title: string;
   img: string;
@@ -6,10 +8,12 @@ interface BannerProps {
 export default function Banner(props: BannerProps) {
   return (
     <div className="relative w-full bg-black/60">
-      <img
+      <Image
         className="absolute h-full w-full object-cover mix-blend-overlay"
         src={props.img}
         alt=""
+        width={1920}
+        height={1080}
       />
       <div className="relative flex items-center justify-center px-4 py-12">
         <div className="h-[2px] w-12 bg-light"></div>

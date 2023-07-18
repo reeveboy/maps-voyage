@@ -62,7 +62,7 @@ export default function AllDestinations() {
   return (
     <div className="grid grid-cols-1 grid-rows-1 gap-2 p-4 md:grid-cols-4 md:grid-rows-2">
       {DESTINATIONS.map((destination, index) => (
-        <DestinationCard index={index} {...destination} />
+        <DestinationCard key={index} index={index} {...destination} />
       ))}
     </div>
   );

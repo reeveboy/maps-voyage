@@ -1,12 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Cta() {
   return (
     <div className="relative my-12 w-full bg-black/60">
-      <img
+      <Image
         className="absolute h-full w-full object-cover mix-blend-overlay"
         src="/images/sea.jpg"
         alt=""
+        width={1920}
+        height={1080}
       />
       <div className="relative flex flex-col items-center px-8 py-16">
         <h3 className="text-center font-cursive text-5xl leading-[85%] text-amber-400">

@@ -2,7 +2,6 @@ import Head from "next/head";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import About from "~/components/page/landing/About";
-import Blogs from "~/components/page/landing/Blogs";
 import Contact from "~/components/page/landing/Contact";
 import Cta from "~/components/page/landing/Cta";
 import Destinations from "~/components/page/landing/Destinations";

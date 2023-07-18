@@ -5,7 +5,7 @@ export default function Message() {
     <div className="p-6">
       <div className="mx-auto flex max-w-2xl flex-col justify-center bg-white p-6 shadow-md">
         <div className="flex flex-col">
-          <span className="text-5xl text-dark">"</span>
+          <span className="text-5xl text-dark">&quot;</span>
           <p className="px-2 text-center text-xl font-light leading-[130%] text-slate-600">
             We invite you to embark on a remarkable journey with MAPS Voyage.
             Whether you are a solo traveler seeking new adventures, a family
@@ -13,7 +13,7 @@ export default function Message() {
             an unforgettable escape, we are here to make your travel dreams a
             reality.{" "}
           </p>
-          <span className="ml-auto mt-2 text-5xl text-dark">"</span>
+          <span className="ml-auto mt-2 text-5xl text-dark">&quot;</span>
         </div>
         <div className="flex items-center justify-center">
           <Image

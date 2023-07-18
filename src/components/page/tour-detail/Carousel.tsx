@@ -9,7 +9,7 @@ export default function Carousel({ images }: CarouselProps) {
     <div className="mt-4 flex flex-col">
       <Image
         className="h-96 w-full"
-        src={images[0]!}
+        src={images[0] ?? ""}
         alt=""
         width={1500}
         height={1000}

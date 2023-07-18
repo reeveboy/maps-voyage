@@ -4,15 +4,18 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 
 export default function Contact() {
   return (
     <div className="my-12 grid w-full grid-cols-1 gap-4 md:mx-auto md:max-w-5xl md:grid-cols-3">
       <div className="relative w-full bg-black/60 md:col-span-1">
-        <img
+        <Image
           className="absolute h-full w-full object-cover mix-blend-overlay"
           src="/images/diver.jpg"
           alt=""
+          width={1920}
+          height={1080}
         />
         <div className="relative flex flex-col px-8 py-16">
           <div className="flex flex-col md:flex-row md:items-center md:gap-2">

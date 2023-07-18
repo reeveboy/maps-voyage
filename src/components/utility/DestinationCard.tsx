@@ -2,6 +2,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import Image from "next/image";
+import Link from "next/link";
 
 interface DestinationCardProps {
   destinationName: string;
@@ -17,7 +18,8 @@ export default function DestinationCard({
   index,
 }: DestinationCardProps) {
   return (
-    <div
+    <Link
+      href={"/destination/shimla"}
       className={classNames(
         "relative h-52 w-full bg-black/60",
         index == 0 || index == 1 || index == 5 || index == 6
@@ -41,6 +43,6 @@ export default function DestinationCard({
           <FontAwesomeIcon className="h-6 text-dark" icon={faChevronRight} />
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

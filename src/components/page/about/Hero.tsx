@@ -16,9 +16,9 @@ export default function Hero() {
         </h2>
         <p className="mt-2 text-center text-xl font-light leading-[120%] tracking-[1%] text-slate-200">
           At <span className="font-black text-white">MAPS Voyage</span>, we
-          believe that traveling is not just about reaching a destination; it's
-          about embarking on a transformative journey that enriches your soul
-          and leaves you with cherished memories.{" "}
+          believe that traveling is not just about reaching a destination;
+          it&apos;s about embarking on a transformative journey that enriches
+          your soul and leaves you with cherished memories.{" "}
         </p>
       </div>
     </div>

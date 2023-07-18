@@ -67,7 +67,7 @@ const Review = ({ date, name, rating, review, img }: ReviewProps) => {
         <div className="flex flex-col">
           <p className="text-2xl text-primary">{name}</p>
           <div className="flex h-4 text-slate-600">
-            {[...Array(rating)].map((_, index) => (
+            {[...Array<number[]>(rating)].map((_, index) => (
               <FontAwesomeIcon
                 key={index}
                 className="mr-1 h-full"

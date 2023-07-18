@@ -40,7 +40,7 @@ const Card = () => {
             </div>
             <div className="ml-4 flex items-center text-slate-500">
               <FontAwesomeIcon className="mr-2 h-5 w-5" icon={faUser} />
-              <p className="text-sm font-light">2 Days</p>
+              <p className="text-sm font-light">2+ </p>
             </div>
           </div>
         </div>
