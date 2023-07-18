@@ -4,6 +4,7 @@ import { Tour } from "~/pages/tour/[slug]";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faStar, faUser } from "@fortawesome/free-solid-svg-icons";
+import Carousel from "react-multi-carousel";
 
 export const TOURS: Tour[] = [
   {
@@ -62,18 +63,73 @@ export const TOURS: Tour[] = [
       "https://images.unsplash.com/photo-1573709814975-c1778ce12926?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
     ],
   },
+  {
+    tourName: "The Royal Rajput Expedition",
+    stars: 4.0,
+    days: 7,
+    description:
+      "Embark on a regal journey through the royal lands of Rajasthan. This 7-day expedition will immerse you in the rich cultural heritage and majestic splendor of the Rajput era.",
+    groupSize: "10",
+    cartegory: "culture",
+    location: "Rajasthan",
+    cardImage:
+      "https://images.unsplash.com/photo-1655137029761-678a4a8da482?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1655137029761-678a4a8da482?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80",
+    ],
+  },
+  {
+    tourName: "The Coastal Odyssey",
+    stars: 4.5,
+    days: 5,
+    description:
+      "Discover the serene backwaters, tranquil beaches, and lush green landscapes that define this enchanting region.",
+    groupSize: "20",
+    cartegory: "culture",
+    location: "Kerala",
+    cardImage:
+      "https://images.unsplash.com/photo-1610817201767-793a9130ce07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=762&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1610817201767-793a9130ce07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=762&q=80",
+    ],
+  },
 ];
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
 export default function Tours() {
   return (
     <div className="my-12 flex flex-col px-4 md:mx-auto md:max-w-6xl">
       <H3 title="FEATURED TOURS" />
       <H2>Most Popular Tours</H2>
-      <div className="mt-4 flex gap-2 overflow-hidden">
+      <Carousel
+        className="mt-4"
+        responsive={responsive}
+        ssr
+        partialVisbile
+        infinite
+      >
         {TOURS.map((tour, index) => (
           <TourCard key={index} tour={tour} />
         ))}
-      </div>
+      </Carousel>
     </div>
   );
 }
