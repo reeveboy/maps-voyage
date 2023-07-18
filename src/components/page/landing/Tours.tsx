@@ -10,6 +10,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "react-multi-carousel";
+import Link from "next/link";
 
 export const TOURS: Tour[] = [
   {
@@ -104,10 +105,12 @@ const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
+    partialVisibilityGutter: 40,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
+    partialVisibilityGutter: 30,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -125,7 +128,7 @@ export default function Tours() {
       <H3 title="FEATURED TOURS" />
       <H2>Most Popular Tours</H2>
       <Carousel
-        className="mt-4"
+        containerClass="mt-4"
         responsive={responsive}
         ssr
         partialVisbile
@@ -145,7 +148,10 @@ interface TourCardProps {
 
 function TourCard({ tour }: TourCardProps) {
   return (
-    <div className="my-2 flex min-w-[300px] flex-col bg-white shadow-md md:w-80">
+    <Link
+      href={"/tour/sea-explorer"}
+      className="my-2 flex min-w-[300px] flex-col bg-white shadow-md md:w-80"
+    >
       <Image
         className="w-full object-cover"
         src={tour.cardImage}
@@ -197,6 +203,6 @@ function TourCard({ tour }: TourCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

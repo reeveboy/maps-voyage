@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function Contact() {
   return (
-    <div className="my-12 grid w-full grid-cols-1 gap-4 md:mx-auto md:max-w-5xl md:grid-cols-3">
+    <div className="my-12 grid w-full grid-cols-1 md:mx-auto md:max-w-5xl md:grid-cols-3">
       <div className="relative w-full bg-black/60 md:col-span-1">
         <Image
           className="absolute h-full w-full object-cover mix-blend-overlay"
