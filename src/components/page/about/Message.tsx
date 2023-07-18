@@ -33,7 +33,7 @@ export default function Message() {
       </div>
 
       <div className="mt-6 grid w-full place-items-center">
-        <button className=" bg-primary px-16 py-3 text-xl text-light shadow-md">
+        <button className=" bg-primary px-16 py-3 text-xl text-light shadow-md transition-colors hover:bg-primaryDark focus:bg-primaryDark">
           Travel With Us!
         </button>
       </div>

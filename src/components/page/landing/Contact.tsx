@@ -15,7 +15,7 @@ export default function Contact() {
           alt=""
         />
         <div className="relative flex flex-col px-8 py-16">
-          <div className="flex flex-col">
+          <div className="flex flex-col md:flex-row md:items-center md:gap-2">
             <p className="h-[2px] w-16 bg-amber-400"></p>
             <h3 className="text-lg uppercase tracking-wider text-amber-400">
               Contact Us
@@ -77,8 +77,8 @@ export default function Contact() {
             rows={5}
             placeholder="Your Message"
           />
-          <button className="w-full bg-primary px-12 py-3 text-lg text-light shadow-md">
-            Send Message
+          <button className="mt-4 bg-primary py-3 text-light transition-colors hover:bg-primaryDark focus:bg-primaryDark">
+            Send Message!
           </button>
         </form>
       </div>

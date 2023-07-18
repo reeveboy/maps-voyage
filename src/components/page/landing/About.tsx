@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Btn from "~/components/utility/Btn";
+import Link from "next/link";
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";
 
@@ -24,7 +24,7 @@ export default function About() {
           />
         </div>
       </div>
-      <div className="mt-6">
+      <div className="mt-6 flex flex-col md:my-auto">
         <H3 title="LEARN ABOUT US" />
         <H2>
           Explore the World with{" "}
@@ -56,7 +56,11 @@ export default function About() {
           />
         </div>
 
-        <Btn text="Learn More!" />
+        <Link href={"/about"}>
+          <button className="mt-4 bg-primary px-12 py-3 uppercase text-light transition-colors hover:bg-primaryDark focus:bg-primaryDark">
+            Learn More!
+          </button>
+        </Link>
       </div>
     </div>
   );

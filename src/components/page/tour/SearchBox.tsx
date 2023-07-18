@@ -14,7 +14,7 @@ export default function SearchBox() {
             type="text"
             placeholder="Type"
           />
-          <button className="text-md mt-2 bg-primary py-3 text-light shadow-md">
+          <button className="text-md mt-2 bg-primary py-3 text-light shadow-md transition-colors hover:bg-primaryDark focus:bg-primaryDark">
             SEARCH
           </button>
         </form>

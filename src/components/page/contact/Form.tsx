@@ -29,7 +29,7 @@ export default function Form() {
         rows={5}
         placeholder="Your Message"
       />
-      <button className="w-full bg-primary px-12 py-3 text-lg text-light shadow-md">
+      <button className="w-full bg-primary px-12 py-3 text-lg text-light shadow-md transition-colors hover:bg-primaryDark focus:bg-primaryDark">
         Send Message
       </button>
     </form>

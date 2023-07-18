@@ -20,7 +20,7 @@ export default function Hero() {
         alt=""
       />
       <div className="relative flex max-w-md flex-col gap-6 p-8">
-        <div className="flex flex-col">
+        <div className="flex flex-col md:flex-row md:items-center md:gap-2">
           <p className="h-[2px] w-16 bg-amber-400"></p>
           <h3 className="text-lg uppercase tracking-wider text-amber-400">
             Reach Us At

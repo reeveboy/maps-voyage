@@ -1,4 +1,4 @@
-import Btn from "~/components/utility/Btn";
+import Link from "next/link";
 
 export default function Cta() {
   return (
@@ -16,7 +16,11 @@ export default function Cta() {
           EXPLORE THE WORLD
         </h2>
         <p className="p-2"></p>
-        <Btn text="Contact Us!" />
+        <Link href={"/contact"}>
+          <button className="mt-4 bg-primary px-12 py-3 uppercase text-light transition-colors hover:bg-primaryDark focus:bg-primaryDark">
+            Get in Touch!
+          </button>
+        </Link>
       </div>
     </div>
   );

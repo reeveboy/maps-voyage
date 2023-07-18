@@ -1,5 +1,5 @@
+import Link from "next/link";
 import DestinationCard from "~/components/utility/DestinationCard";
-import Btn from "~/components/utility/Btn";
 import H2 from "~/components/utility/H2";
 import H3 from "~/components/utility/H3";
 
@@ -58,7 +58,11 @@ export default function Destinations() {
         ))}
       </div>
       <div className="mx-auto">
-        <Btn text="More Destinations!" vairant="outlined" />
+        <Link href={"/destinations"}>
+          <button className="mt-4 border-2 border-primary px-12 py-3 uppercase text-primary transition-colors hover:border-primaryDark hover:bg-primaryDark hover:text-light focus:border-primaryDark focus:bg-primaryDark focus:text-light">
+            More Destinations!
+          </button>
+        </Link>
       </div>
     </div>
   );

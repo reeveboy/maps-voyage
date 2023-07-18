@@ -45,7 +45,7 @@ export default function Footer() {
               type="text"
               placeholder="Your Name"
             />
-            <button className="ml-2 bg-primary p-2 text-xs uppercase text-light shadow-md">
+            <button className="ml-2 bg-primary p-2 text-xs uppercase text-light shadow-md transition-colors hover:bg-primaryDark focus:bg-primaryDark">
               Sign Up Now!
             </button>
           </div>
@@ -54,19 +54,19 @@ export default function Footer() {
         <div className="font-light">
           <p className="text-3xl text-primary">Follow Us</p>
           <div className="mt-2 flex">
-            <div className="grid h-10 w-10 place-items-center rounded-full bg-primary ">
+            <div className="grid h-10 w-10 place-items-center rounded-full bg-primary transition-colors hover:bg-primaryDark focus:bg-primaryDark">
               <FontAwesomeIcon
                 className="h-4 w-4 text-light"
                 icon={faFacebook}
               />
             </div>
-            <div className="ml-4 grid h-10 w-10 place-items-center rounded-full bg-primary ">
+            <div className="ml-4 grid h-10 w-10 place-items-center rounded-full bg-primary transition-colors hover:bg-primaryDark focus:bg-primaryDark">
               <FontAwesomeIcon
                 className="h-4 w-4 text-light"
                 icon={faInstagram}
               />
             </div>
-            <div className="ml-4 grid h-10 w-10 place-items-center rounded-full bg-primary ">
+            <div className="ml-4 grid h-10 w-10 place-items-center rounded-full bg-primary transition-colors hover:bg-primaryDark focus:bg-primaryDark">
               <FontAwesomeIcon
                 className="h-4 w-4 text-light"
                 icon={faLinkedinIn}

@@ -84,7 +84,7 @@ interface TourCardProps {
 
 function TourCard({ tour }: TourCardProps) {
   return (
-    <div className="my-2 flex min-w-[300px] flex-col bg-white shadow-md">
+    <div className="my-2 flex min-w-[300px] flex-col bg-white shadow-md md:w-80">
       <Image
         className="w-full object-cover"
         src={tour.cardImage}
@@ -103,7 +103,7 @@ function TourCard({ tour }: TourCardProps) {
           </p>
         </div>
         <p className="mt-4 text-xl leading-[95%] text-dark">{tour.tourName}</p>
-        <p className="text-lg font-light text-slate-500">{tour.location}</p>
+        <p className="text-md font-light text-slate-500">{tour.location}</p>
         {/* <p className="text-md mt-1 line-clamp-3 font-light leading-[120%] text-slate-500 md:mt-4 md:line-clamp-4">
           {tour.description}
         </p> */}
@@ -111,14 +111,12 @@ function TourCard({ tour }: TourCardProps) {
           <div className="mt-4 h-[1px] bg-slate-500"></div>
           <div className="mt-4 flex justify-center">
             <div className="mr-2 flex items-center text-slate-500 md:mr-3">
-              <FontAwesomeIcon icon={faClock} className="mr-1 h-3 w-3" />
-
+              <FontAwesomeIcon icon={faClock} className="mr-1 h-4 w-4" />
               <p className="text-xs font-light">{tour.days} Days</p>
             </div>
 
             <div className="mr-2 flex items-center text-slate-500 md:mr-3">
-              <FontAwesomeIcon icon={faUser} className="mr-1 h-3 w-3" />
-
+              <FontAwesomeIcon icon={faUser} className="mr-1 h-4 w-4" />
               <p className="text-xs font-light">{tour.groupSize}</p>
             </div>
           </div>
