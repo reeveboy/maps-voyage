@@ -53,7 +53,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
-      <div className="bg-white px-4 md:col-span-2 md:flex md:items-center md:justify-center md:px-8">
+      <div className="bg-white p-4 md:col-span-2 md:flex md:items-center md:justify-center md:px-8">
         <form className="grid w-full grid-cols-1 gap-2 font-light md:grid-cols-2">
           <input
             className="text-md w-full bg-slate-200 px-5 py-3 text-slate-600"

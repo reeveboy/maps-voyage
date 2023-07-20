@@ -39,7 +39,14 @@ const sections: Section[] = [
 
 export default function Hero() {
   return (
-    <Carousel responsive={responsive} ssr autoPlay draggable={false}>
+    <Carousel
+      responsive={responsive}
+      ssr
+      autoPlay
+      autoPlaySpeed={5000}
+      draggable={false}
+      infinite
+    >
       {sections.map((item, index) => (
         <Item key={index} item={item} />
       ))}
@@ -62,7 +69,7 @@ const Item = ({ item }: ItmeProps) => {
         height={1080}
       />
       <div className="relative flex h-full w-full flex-col items-center justify-center">
-        <p className="max-w-md text-center text-6xl font-black leading-[85%] text-light drop-shadow-lg">
+        <p className="max-w-md px-1 text-center text-6xl font-black leading-[85%] text-light drop-shadow-lg">
           {item.title}
         </p>
         <Link
