@@ -1,20 +1,43 @@
 import Image from "next/image";
+import Carousel from "react-multi-carousel";
 
 interface CarouselProps {
   images: string[];
 }
 
-export default function Carousel({ images }: CarouselProps) {
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+export default function CarouselContainer({ images }: CarouselProps) {
   return (
-    <div className="mt-4 flex flex-col">
-      <Image
-        className="h-96 w-full"
-        src={images[0] ?? ""}
-        alt=""
-        width={1500}
-        height={1000}
-      />
-      <div className="flex overflow-hidden">
+    <Carousel responsive={responsive} ssr className="mt-4">
+      {images.map((image, index) => (
+        <Image
+          key={index}
+          className="h-96 w-full"
+          src={image}
+          alt=""
+          width={1500}
+          height={1000}
+        />
+      ))}
+      {/* <div className="flex overflow-hidden">
         {images.map((image, index) => (
           <Image
             key={index}
@@ -25,7 +48,7 @@ export default function Carousel({ images }: CarouselProps) {
             height={100}
           />
         ))}
-      </div>
-    </div>
+      </div> */}
+    </Carousel>
   );
 }
