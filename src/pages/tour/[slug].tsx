@@ -6,26 +6,7 @@ import BookForm from "~/components/page/tour-detail/BookForm";
 import Carousel from "~/components/page/tour-detail/Carousel";
 import Hero from "~/components/page/tour-detail/Hero";
 import Overview from "~/components/page/tour-detail/Overview";
-
-type TourPlan = {
-  day: number;
-  title: string;
-  description: string;
-};
-
-export interface Tour {
-  tourName: string;
-  stars: number;
-  days: number;
-  description?: string;
-  groupSize: string;
-  cartegory?: string;
-  location: string;
-  cardImage: string;
-  images: string[];
-  overview?: string;
-  tourPlan?: TourPlan[];
-}
+import type { Tour } from "~/types";
 
 const TOUR: Tour = {
   tourName: "The Sea Explorer",

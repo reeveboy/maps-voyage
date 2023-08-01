@@ -7,11 +7,38 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model student {
-  id            Int     @id @default(autoincrement())
-  first_name    String?
-  last_name     String?
-  age           Int?
-  student_email String
-  class         String?
+model Destination {
+  id            String @id @default(uuid())
+  place         String
+  numberOfTours Int
+  images        String
+  description   String
+  tours         Tour[]
+}
+
+model Tour {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  images      String
+  price       Int?
+  duration    Int
+  groupSize   Int
+  category    String
+  rating      Float
+
+  destinationId String
+  destination   Destination @relation(fields: [destinationId], references: [id])
+
+  overview String
+  tourDays TourDay[]
+}
+
+model TourDay {
+  id          String @id @default(uuid())
+  dayNumber   Int
+  dayTitle    String
+  description String
+  tourId      String
+  tour        Tour   @relation(fields: [tourId], references: [id])
 }
