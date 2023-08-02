@@ -8,12 +8,14 @@ datasource db {
 }
 
 model Destination {
-  id            String @id @default(uuid())
+  id            String  @id @default(uuid())
   place         String
-  numberOfTours Int
+  numberOfTours Int?
+  banner        String
   images        String
-  description   String
+  description   String?
   tours         Tour[]
+  featured      Boolean @default(false)
 }
 
 model Tour {
@@ -32,6 +34,7 @@ model Tour {
 
   overview String
   tourDays TourDay[]
+  featured Boolean   @default(false)
 }
 
 model TourDay {

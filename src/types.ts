@@ -1,25 +1,9 @@
-export type Tour = {
-  tourName: string;
-  stars: number;
-  days: number;
-  description?: string;
-  groupSize: string;
-  cartegory?: string;
-  location: string;
-  cardImage: string;
-  images: string[];
-  overview?: string;
-  tourPlan?: TourPlan[];
-};
+import type { Prisma } from "@prisma/client";
 
-export type TourPlan = {
-  day: number;
-  title: string;
-  description: string;
-};
+export type TourWithDestination = Prisma.TourGetPayload<{
+  include: { destination: true };
+}>;
 
-export type Destination = {
-  destinationName: string;
-  tours: number;
-  imgUrl: string;
-};
+export type TourWithDestinationAndDays = Prisma.TourGetPayload<{
+  include: { destination: true; tourDays: true };
+}>;

@@ -1,3 +1,5 @@
+import { PrismaClient } from "@prisma/client";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
@@ -5,8 +7,13 @@ import AllTours from "~/components/page/tour/AllTours";
 import FilterBox from "~/components/page/tour/FilterBox";
 import SearchBox from "~/components/page/tour/SearchBox";
 import Banner from "~/components/utility/Banner";
+import type { TourWithDestination } from "~/types";
 
-export default function Tours() {
+interface ToursPageProps {
+  tours: TourWithDestination[];
+}
+
+export default function Tours({ tours }: ToursPageProps) {
   return (
     <>
       <Head>
@@ -22,7 +29,7 @@ export default function Tours() {
         />
         <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-3">
           <div className="md:col-span-2">
-            <AllTours />
+            <AllTours tours={tours} />
           </div>
           <div className="flex flex-col">
             <SearchBox />
@@ -34,3 +41,12 @@ export default function Tours() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prisma = new PrismaClient();
+  const tours = await prisma.tour.findMany({ include: { destination: true } });
+
+  return {
+    props: { tours },
+  };
+};

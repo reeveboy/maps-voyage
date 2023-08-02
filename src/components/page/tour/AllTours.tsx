@@ -1,5 +1,3 @@
-import type { Tour } from "~/pages/tour/[slug]";
-import { TOURS } from "../landing/Tours";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,15 +6,21 @@ import {
   faStar,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import type { TourWithDestination } from "~/types";
+import Link from "next/link";
 
-export default function AllTours() {
+interface AllToursProps {
+  tours: TourWithDestination[];
+}
+
+export default function AllTours({ tours }: AllToursProps) {
   return (
     <div className="my-8 flex flex-col px-4">
       <p className="text-3xl font-light capitalize text-dark">
-        {TOURS.length} tours found
+        {tours.length} tours found
       </p>
       <div className="mt-4 flex flex-col justify-center">
-        {TOURS.map((tour, idx) => (
+        {tours.map((tour, idx) => (
           <TourCard tour={tour} key={idx} />
         ))}
       </div>
@@ -25,16 +29,19 @@ export default function AllTours() {
 }
 
 interface TourCardProps {
-  tour: Tour;
+  tour: TourWithDestination;
 }
 
 function TourCard({ tour }: TourCardProps) {
   return (
-    <div className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3">
+    <Link
+      href={`/tour/${tour.id}`}
+      className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3"
+    >
       <Image
         className="h-64 w-full object-cover"
-        src={tour.cardImage}
-        alt={tour.tourName}
+        src={tour.images}
+        alt={tour.name}
         width={1000}
         height={1000}
       />
@@ -42,13 +49,15 @@ function TourCard({ tour }: TourCardProps) {
         <div className="flex items-center">
           <FontAwesomeIcon icon={faStar} className="h-6 w-6 text-primary" />
           <p className="text-md ml-1 font-light text-slate-500">
-            {tour.stars} Superb
+            {tour.rating} Superb
           </p>
         </div>
         <p className="mt-4 text-3xl leading-[95%] text-slate-700">
-          {tour.tourName}
+          {tour.name}
         </p>
-        <p className="text-xl font-light text-slate-500">{tour.location}</p>
+        <p className="text-xl font-light text-slate-500">
+          {tour.destination.place}
+        </p>
         <div className="mt-4 h-[1px] bg-slate-500"></div>
         <div className="mt-4 flex justify-center md:justify-start">
           <div className="mr-4 flex items-center">
@@ -57,7 +66,7 @@ function TourCard({ tour }: TourCardProps) {
               className="mr-1 h-5 w-5 text-primary"
             />
             <p className="text-md font-light text-slate-500">
-              {tour.days} Days
+              {tour.duration} Days
             </p>
           </div>
 
@@ -77,11 +86,11 @@ function TourCard({ tour }: TourCardProps) {
               className="mr-1 h-5 w-5 text-primary"
             />
             <p className="text-md font-light capitalize text-slate-500">
-              {tour.cartegory}
+              {tour.category}
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -1,7 +1,7 @@
-import type { Tour } from "~/pages/tour/[slug]";
+import type { TourWithDestinationAndDays } from "~/types";
 
 interface OverviewProps {
-  tour: Tour;
+  tour: TourWithDestinationAndDays;
 }
 
 export default function Overview({ tour }: OverviewProps) {
@@ -15,17 +15,19 @@ export default function Overview({ tour }: OverviewProps) {
       </div>
 
       <div className="mt-8 flex flex-col gap-8">
-        {tour.tourPlan?.map((plan, index) => (
+        {tour.tourDays?.map((plan, index) => (
           <div key={index} className="flex gap-4 md:gap-6">
             <div className="flex flex-col items-center">
               <div className="grid h-16 w-16 place-items-center rounded-full bg-primary text-xl text-light">
-                {plan.day.toLocaleString("en-US", { minimumIntegerDigits: 2 })}
+                {plan.dayNumber.toLocaleString("en-US", {
+                  minimumIntegerDigits: 2,
+                })}
               </div>
               <div className="mt-2 w-[2px] grow bg-slate-500"></div>
             </div>
             <div className="flex flex-col">
               <p className="text-3xl font-light text-dark">
-                Day {plan.day}: {plan.title}
+                Day {plan.dayNumber}: {plan.dayTitle}
               </p>
               <p className="text-md mt-2 font-light leading-snug text-slate-600">
                 {plan.description}
