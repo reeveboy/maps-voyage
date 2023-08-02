@@ -32,6 +32,7 @@ export default function Destinations({ destinations }: DestinationsPageProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const prisma = new PrismaClient();
   const destinations = await prisma.destination.findMany({});
+  await prisma.$disconnect();
 
   return {
     props: { destinations },

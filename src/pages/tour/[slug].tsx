@@ -48,11 +48,16 @@ export default function TourPage({ tour, images }: TourPageProps) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params?.slug;
 
+  if (id == null) throw new Error("Id undefined");
+
   const prisma = new PrismaClient();
+
   const tour = await prisma.tour.findUnique({
     where: { id: id as string },
     include: { destination: true, tourDays: true },
   });
+
+  await prisma.$disconnect();
 
   const images = tour?.images.split(";");
 

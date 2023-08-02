@@ -45,6 +45,7 @@ export default function Tours({ tours }: ToursPageProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const prisma = new PrismaClient();
   const tours = await prisma.tour.findMany({ include: { destination: true } });
+  await prisma.$disconnect();
 
   return {
     props: { tours },

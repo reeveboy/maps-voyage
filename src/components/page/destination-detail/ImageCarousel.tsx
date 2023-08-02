@@ -30,7 +30,12 @@ const responsive = {
 
 export default function ImageCarousel({ images }: ImageCarouselProps) {
   return (
-    <Carousel containerClass="mt-4" responsive={responsive} ssr partialVisbile>
+    <Carousel
+      containerClass="mt-4"
+      responsive={responsive}
+      ssr={true}
+      partialVisible={true}
+    >
       {images.map((image, index) => (
         <Image
           key={index}
@@ -39,6 +44,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           className="mx-2 h-52 w-52 object-cover"
           width={300}
           height={300}
+          priority={true}
         />
       ))}
     </Carousel>

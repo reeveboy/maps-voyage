@@ -49,8 +49,8 @@ export default function Tours({ tours }: TourProps) {
       <Carousel
         containerClass="mt-4"
         responsive={responsive}
-        ssr
-        partialVisbile
+        ssr={true}
+        partialVisible={true}
         infinite
       >
         {tours.map((tour, index) => (

@@ -44,10 +44,15 @@ export default function DestinationPage({
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params?.slug;
 
+  if (id == null) throw new Error("Id undefined");
+
   const prisma = new PrismaClient();
+
   const destination = await prisma.destination.findUnique({
     where: { id: id as string },
   });
+
+  await prisma.$disconnect();
 
   const images = destination?.images.split(";");
 
