@@ -2,7 +2,6 @@ import type { Destination } from "@prisma/client";
 import { PrismaClient } from "@prisma/client";
 import type { GetServerSideProps } from "next";
 import Head from "next/head";
-import { parse } from "path";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import Description from "~/components/page/destination-detail/Description";
