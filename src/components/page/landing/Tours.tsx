@@ -20,12 +20,12 @@ const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
-    partialVisibilityGutter: 40,
+    partialVisibilityGutter: 30,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    partialVisibilityGutter: 30,
+    partialVisibilityGutter: 10,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -69,7 +69,7 @@ function TourCard({ tour }: { tour: TourWithDestination }) {
     >
       <Image
         className="w-full object-cover"
-        src={tour.images}
+        src={`/destinations${tour.banner}`}
         alt={tour.name}
         width={1000}
         height={1000}

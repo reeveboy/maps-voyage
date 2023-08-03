@@ -29,7 +29,7 @@ export default function DestinationCard({
     >
       <Image
         className="absolute h-full w-full object-cover mix-blend-overlay"
-        src={banner}
+        src={`/destinations${banner}`}
         alt={place}
         width={1000}
         height={1000}

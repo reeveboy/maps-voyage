@@ -3,45 +3,49 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Destination {
-  id            String  @id @default(uuid())
+  id            Int     @id @default(autoincrement())
   place         String
   numberOfTours Int?
   banner        String
-  images        String
-  description   String?
-  tours         Tour[]
+  images        String  @db.Text
+  description   String? @db.Text
   featured      Boolean @default(false)
+
+  tours Tour[]
 }
 
 model Tour {
-  id          String @id @default(uuid())
+  id          Int     @id @default(autoincrement())
   name        String
-  description String
-  images      String
+  description String? @db.Text
+  banner      String
+  images      String  @db.Text
   price       Int?
   duration    Int
-  groupSize   Int
-  category    String
-  rating      Float
+  groupSize   Int?
+  category    String?
+  rating      Float?
+  featured    Boolean @default(false)
 
-  destinationId String
+  destinationId Int
   destination   Destination @relation(fields: [destinationId], references: [id])
 
-  overview String
+  overview String?
   tourDays TourDay[]
-  featured Boolean   @default(false)
 }
 
 model TourDay {
-  id          String @id @default(uuid())
+  id          Int    @id @default(autoincrement())
   dayNumber   Int
   dayTitle    String
-  description String
-  tourId      String
-  tour        Tour   @relation(fields: [tourId], references: [id])
+  description String @db.Text
+
+  tourId Int
+  tour   Tour @relation(fields: [tourId], references: [id])
 }

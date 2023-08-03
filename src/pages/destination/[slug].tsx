@@ -2,6 +2,7 @@ import type { Destination } from "@prisma/client";
 import { PrismaClient } from "@prisma/client";
 import type { GetServerSideProps } from "next";
 import Head from "next/head";
+import { parse } from "path";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import Description from "~/components/page/destination-detail/Description";
@@ -27,7 +28,10 @@ export default function DestinationPage({
       </Head>
       <main>
         <Navbar />
-        <Banner img={destination.banner} title={destination.place} />
+        <Banner
+          img={`/destinations${destination.banner}`}
+          title={destination.place}
+        />
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 p-4 md:grid-cols-3">
           <div className="flex flex-col gap-4 md:col-span-2">
             <Description description={destination.description} />
@@ -49,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const prisma = new PrismaClient();
 
   const destination = await prisma.destination.findUnique({
-    where: { id: id as string },
+    where: { id: parseInt(id as string) },
   });
 
   await prisma.$disconnect();

@@ -53,7 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const prisma = new PrismaClient();
 
   const tour = await prisma.tour.findUnique({
-    where: { id: id as string },
+    where: { id: parseInt(id as string) },
     include: { destination: true, tourDays: true },
   });
 

@@ -31,7 +31,7 @@ export default function CarouselContainer({ images }: CarouselProps) {
         <Image
           key={index}
           className="h-96 w-full object-cover"
-          src={image}
+          src={`/destinations${image}`}
           alt=""
           width={1920}
           height={1080}

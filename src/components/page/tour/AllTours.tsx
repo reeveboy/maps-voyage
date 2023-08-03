@@ -40,7 +40,7 @@ function TourCard({ tour }: TourCardProps) {
     >
       <Image
         className="h-64 w-full object-cover"
-        src={tour.images}
+        src={`/destinations${tour.banner}`}
         alt={tour.name}
         width={1000}
         height={1000}
