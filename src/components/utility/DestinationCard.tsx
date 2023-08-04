@@ -22,7 +22,7 @@ export default function DestinationCard({
       href={`/destination/${id}`}
       className={classNames(
         "relative h-52 w-full bg-black/60",
-        index == 0 || index == 1 || index == 5 || index == 6
+        index % 8 == 0 || index % 8 == 1 || index % 8 == 5 || index % 8 == 6
           ? "md:row-span-2 md:h-[500px]"
           : "md:col-span-2 md:h-full"
       )}
