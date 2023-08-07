@@ -42,7 +42,7 @@ model Tour {
 
 model TourDay {
   id          Int    @id @default(autoincrement())
-  dayNumber   Int
+  dayNumber   String
   dayTitle    String
   description String @db.Text
 

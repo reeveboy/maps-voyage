@@ -57,6 +57,9 @@ export async function getStaticProps() {
     include: {
       destination: true,
     },
+    where: {
+      featured: true,
+    },
   });
 
   await prisma.$disconnect();

@@ -19,7 +19,7 @@ export default function Overview({ tour }: OverviewProps) {
           <div key={index} className="flex gap-4 md:gap-6">
             <div className="flex flex-col items-center">
               <div className="grid h-16 w-16 place-items-center rounded-full bg-primary text-xl text-light">
-                {plan.dayNumber.toLocaleString("en-US", {
+                {parseInt(plan.dayNumber).toLocaleString("en-US", {
                   minimumIntegerDigits: 2,
                 })}
               </div>
@@ -29,9 +29,14 @@ export default function Overview({ tour }: OverviewProps) {
               <p className="text-3xl font-light text-dark">
                 Day {plan.dayNumber}: {plan.dayTitle}
               </p>
-              <p className="text-md mt-2 font-light leading-snug text-slate-600">
-                {plan.description}
-              </p>
+              <ul className="mt-2 text-lg font-light leading-snug text-slate-600">
+                {plan.description.split("/n").map((text, index) => (
+                  <li className="mt-1 leading-[120%]" key={index}>
+                    {text}
+                    <br />
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         ))}
