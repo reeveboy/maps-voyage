@@ -2,23 +2,60 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
+  faChevronLeft,
+  faChevronRight,
   faClock,
   faStar,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import type { TourWithDestination } from "~/types";
 import Link from "next/link";
+import { useState } from "react";
 
 interface AllToursProps {
-  tours: TourWithDestination[];
+  allTours: TourWithDestination[];
 }
 
-export default function AllTours({ tours }: AllToursProps) {
+export default function AllTours({ allTours }: AllToursProps) {
+  const [tours, setTours] = useState(allTours.slice(0, 10)); // [0, 10
+  const [page, setPage] = useState(1);
+  const lastPage = Math.ceil(allTours.length / 10);
+
+  const prevPage = () => {
+    setPage((prev) => (prev == 1 ? prev : prev - 1));
+    setTours(allTours.slice((page - 1) * 10, page * 10));
+  };
+
+  const nextPage = () => {
+    setPage((prev) => (prev == lastPage ? prev : prev + 1));
+    setTours(allTours.slice((page - 1) * 10, page * 10));
+  };
+
   return (
     <div className="my-8 flex flex-col px-4">
-      <p className="text-3xl font-light capitalize text-dark">
-        {tours.length} tours found
-      </p>
+      <div className="mt-3 flex items-center justify-between">
+        <p className="text-2xl font-light text-dark">
+          Showing {allTours.length} Results
+        </p>
+        <div className="flex">
+          <button
+            onClick={prevPage}
+            className="grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark"
+          >
+            <FontAwesomeIcon className="h-6 text-light" icon={faChevronLeft} />
+          </button>
+          <div className="ml-3 grid h-12 w-12 place-items-center rounded-full bg-slate-300">
+            <p className="text-lg text-slate-600">{page}</p>
+          </div>
+          <button
+            onClick={nextPage}
+            className="ml-3 grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark"
+          >
+            <FontAwesomeIcon className="h-6 text-light" icon={faChevronRight} />
+          </button>
+        </div>
+      </div>
+
       <div className="mt-4 flex flex-col justify-center">
         {tours.map((tour, idx) => (
           <TourCard tour={tour} key={idx} />

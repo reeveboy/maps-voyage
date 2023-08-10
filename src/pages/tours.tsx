@@ -29,7 +29,7 @@ export default function Tours({ tours }: ToursPageProps) {
         />
         <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-3">
           <div className="md:col-span-2">
-            <AllTours tours={tours} />
+            <AllTours allTours={tours} />
           </div>
           <div className="flex flex-col">
             <SearchBox />
@@ -44,7 +44,10 @@ export default function Tours({ tours }: ToursPageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const prisma = new PrismaClient();
-  const tours = await prisma.tour.findMany({ include: { destination: true } });
+  const tours = await prisma.tour.findMany({
+    include: { destination: true },
+    orderBy: { name: "asc" },
+  });
   await prisma.$disconnect();
 
   return {
