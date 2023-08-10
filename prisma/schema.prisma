@@ -14,7 +14,7 @@ model Destination {
   numberOfTours Int?
   banner        String
   images        String  @db.Text
-  description   String? @db.Text
+  description   String  @db.Text
   featured      Boolean @default(false)
 
   tours Tour[]

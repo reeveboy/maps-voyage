@@ -1,7 +1,7 @@
-import { splitText } from "~/utils/SplitText";
+import { splitText } from "~/utils/splitText";
 
 interface DescriptionProps {
-  description: string | null;
+  description: string;
 }
 
 export default function Description({ description }: DescriptionProps) {
