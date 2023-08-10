@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import type { TourWithDestination } from "~/types";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface AllToursProps {
   allTours: TourWithDestination[];
@@ -21,14 +21,16 @@ export default function AllTours({ allTours }: AllToursProps) {
   const [page, setPage] = useState(1);
   const lastPage = Math.ceil(allTours.length / 10);
 
+  useEffect(() => {
+    setTours(allTours.slice((page - 1) * 10, page * 10));
+  }, [page, allTours]);
+
   const prevPage = () => {
     setPage((prev) => (prev == 1 ? prev : prev - 1));
-    setTours(allTours.slice((page - 1) * 10, page * 10));
   };
 
   const nextPage = () => {
     setPage((prev) => (prev == lastPage ? prev : prev + 1));
-    setTours(allTours.slice((page - 1) * 10, page * 10));
   };
 
   return (
