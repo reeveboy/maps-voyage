@@ -8,12 +8,17 @@ import FilterBox from "~/components/page/tour/FilterBox";
 import SearchBox from "~/components/page/tour/SearchBox";
 import Banner from "~/components/utility/Banner";
 import type { TourWithDestination } from "~/types";
+import { api } from "~/utils/api";
 
 interface ToursPageProps {
   tours: TourWithDestination[];
+  totalNumberOfTours: number;
 }
 
-export default function Tours({ tours }: ToursPageProps) {
+export default function Tours({ tours, totalNumberOfTours }: ToursPageProps) {
+  const { data } = api.example.hello.useQuery({ text: "hello" });
+  console.log(data);
+
   return (
     <>
       <Head>
@@ -29,7 +34,7 @@ export default function Tours({ tours }: ToursPageProps) {
         />
         <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-3">
           <div className="md:col-span-2">
-            <AllTours tours={tours} />
+            <AllTours tours={tours} total={totalNumberOfTours} />
           </div>
           <div className="flex flex-col">
             <SearchBox />
@@ -44,10 +49,17 @@ export default function Tours({ tours }: ToursPageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const prisma = new PrismaClient();
-  const tours = await prisma.tour.findMany({ include: { destination: true } });
+  const tours = await prisma.tour.findMany({
+    include: { destination: true },
+    take: 10,
+    orderBy: { name: "asc" },
+  });
+
+  const totalNumberOfTours = await prisma.tour.count();
+
   await prisma.$disconnect();
 
   return {
-    props: { tours },
+    props: { tours, totalNumberOfTours },
   };
 };

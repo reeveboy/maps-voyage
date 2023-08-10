@@ -10,11 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "react-multi-carousel";
 import Link from "next/link";
-import type { Prisma } from "@prisma/client";
-
-type TourWithDestination = Prisma.TourGetPayload<{
-  include: { destination: true };
-}>;
+import type { TourWithDestination } from "~/types";
 
 const responsive = {
   superLargeDesktop: {

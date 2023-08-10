@@ -2,27 +2,54 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
+  faChevronLeft,
+  faChevronRight,
   faClock,
   faStar,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import type { TourWithDestination } from "~/types";
 import Link from "next/link";
+import { useMemo, useState } from "react";
+import axios from "axios";
 
 interface AllToursProps {
   tours: TourWithDestination[];
+  total: number;
 }
 
-export default function AllTours({ tours }: AllToursProps) {
+export default function AllTours({ tours, total }: AllToursProps) {
+  // const [pageTours, setPageTours] = useState<TourWithDestination[]>(tours);
+  // const [pageNumber, setPageNumber] = useState<number>(0);
+
+  // const newPage = useMemo(() => {
+  //   return axios.get("http://localhost:3000/api/getPaginatedTours", {
+  //     data: {
+  //       take: 10,
+  //       skip: 10 * pageNumber,
+  //     },
+  //   });
+  // }, [pageNumber]).then((data) => {
+  //   console.log(data.data);
+  // });
+
   return (
     <div className="my-8 flex flex-col px-4">
-      <p className="text-3xl font-light capitalize text-dark">
-        {tours.length} tours found
+      <p className="text-3xl font-light text-dark">
+        {tours.length} of {total} tours
       </p>
       <div className="mt-4 flex flex-col justify-center">
         {tours.map((tour, idx) => (
           <TourCard tour={tour} key={idx} />
         ))}
+      </div>
+      <div className="mt-4 flex">
+        <button className="grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark focus:bg-primaryDark">
+          <FontAwesomeIcon className="h-6 text-light" icon={faChevronLeft} />
+        </button>
+        <button className="ml-4 grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark focus:bg-primaryDark">
+          <FontAwesomeIcon className="h-6 text-light" icon={faChevronRight} />
+        </button>
       </div>
     </div>
   );

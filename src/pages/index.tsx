@@ -21,6 +21,8 @@ interface Props {
 }
 
 export default function Home({ destinations, tours }: Props) {
+  console.log(destinations, tours);
+
   return (
     <>
       <Head>
@@ -30,7 +32,7 @@ export default function Home({ destinations, tours }: Props) {
       </Head>
       <main>
         <Navbar />
-        <Hero />
+        {/* <Hero /> */}
         <About />
         <Destinations destinations={destinations} />
         <Tours tours={tours} />
