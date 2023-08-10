@@ -1,10 +1,17 @@
+import type { Destination } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import AllDestinations from "~/components/page/destination/AllDestinations";
 import Hero from "~/components/page/destination/Hero";
 
-export default function Destinations() {
+interface DestinationsPageProps {
+  destinations: Destination[];
+}
+
+export default function Destinations({ destinations }: DestinationsPageProps) {
   return (
     <>
       <Head>
@@ -15,9 +22,19 @@ export default function Destinations() {
       <main>
         <Navbar />
         <Hero />
-        <AllDestinations />
+        <AllDestinations destinations={destinations} />
         <Footer />
       </main>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prisma = new PrismaClient();
+  const destinations = await prisma.destination.findMany({});
+  await prisma.$disconnect();
+
+  return {
+    props: { destinations },
+  };
+};

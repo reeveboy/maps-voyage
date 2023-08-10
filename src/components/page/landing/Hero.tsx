@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <Carousel
       responsive={responsive}
-      ssr
+      ssr={true}
       autoPlay
       autoPlaySpeed={5000}
       draggable={false}

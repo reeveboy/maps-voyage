@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Destination {
+  id            Int     @id @default(autoincrement())
+  place         String
+  numberOfTours Int?
+  banner        String
+  images        String  @db.Text
+  description   String  @db.Text
+  featured      Boolean @default(false)
+
+  tours Tour[]
+}
+
+model Tour {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String? @db.Text
+  banner      String
+  images      String  @db.Text
+  price       Int?
+  duration    Int
+  groupSize   Int?
+  category    String?
+  rating      Float?
+  featured    Boolean @default(false)
+
+  destinationId Int
+  destination   Destination @relation(fields: [destinationId], references: [id])
+
+  overview String?
+  tourDays TourDay[]
+}
+
+model TourDay {
+  id          Int    @id @default(autoincrement())
+  dayNumber   String
+  dayTitle    String
+  description String @db.Text
+
+  tourId Int
+  tour   Tour @relation(fields: [tourId], references: [id])
+}

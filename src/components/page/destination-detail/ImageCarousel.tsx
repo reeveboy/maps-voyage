@@ -14,7 +14,7 @@ const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    partialVisibilityGutter: 30,
+    partialVisibilityGutter: 10,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -30,15 +30,21 @@ const responsive = {
 
 export default function ImageCarousel({ images }: ImageCarouselProps) {
   return (
-    <Carousel containerClass="mt-4" responsive={responsive} ssr partialVisbile>
+    <Carousel
+      containerClass="mt-4"
+      responsive={responsive}
+      ssr={true}
+      partialVisible={true}
+    >
       {images.map((image, index) => (
         <Image
           key={index}
-          src={image}
+          src={`/destinations${image}`}
           alt="destination"
           className="mx-2 h-52 w-52 object-cover"
           width={300}
           height={300}
+          priority={true}
         />
       ))}
     </Carousel>

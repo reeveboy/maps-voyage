@@ -30,11 +30,11 @@ export default function CarouselContainer({ images }: CarouselProps) {
       {images.map((image, index) => (
         <Image
           key={index}
-          className="h-96 w-full"
-          src={image}
+          className="h-96 w-full object-cover"
+          src={`/destinations${image}`}
           alt=""
-          width={1500}
-          height={1000}
+          width={1920}
+          height={1080}
         />
       ))}
       {/* <div className="flex overflow-hidden">

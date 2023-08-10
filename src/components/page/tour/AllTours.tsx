@@ -1,22 +1,65 @@
-import type { Tour } from "~/pages/tour/[slug]";
-import { TOURS } from "../landing/Tours";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
+  faChevronLeft,
+  faChevronRight,
   faClock,
   faStar,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import type { TourWithDestination } from "~/types";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default function AllTours() {
+interface AllToursProps {
+  allTours: TourWithDestination[];
+}
+
+export default function AllTours({ allTours }: AllToursProps) {
+  const [tours, setTours] = useState(allTours.slice(0, 10)); // [0, 10
+  const [page, setPage] = useState(1);
+  const lastPage = Math.ceil(allTours.length / 10);
+
+  useEffect(() => {
+    setTours(allTours.slice((page - 1) * 10, page * 10));
+  }, [page, allTours]);
+
+  const prevPage = () => {
+    setPage((prev) => (prev == 1 ? prev : prev - 1));
+  };
+
+  const nextPage = () => {
+    setPage((prev) => (prev == lastPage ? prev : prev + 1));
+  };
+
   return (
     <div className="my-8 flex flex-col px-4">
-      <p className="text-3xl font-light capitalize text-dark">
-        {TOURS.length} tours found
-      </p>
+      <div className="mt-3 flex items-center justify-between">
+        <p className="text-2xl font-light text-dark">
+          Showing {allTours.length} Results
+        </p>
+        <div className="flex">
+          <button
+            onClick={prevPage}
+            className="grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark"
+          >
+            <FontAwesomeIcon className="h-6 text-light" icon={faChevronLeft} />
+          </button>
+          <div className="ml-3 grid h-12 w-12 place-items-center rounded-full bg-slate-300">
+            <p className="text-lg text-slate-600">{page}</p>
+          </div>
+          <button
+            onClick={nextPage}
+            className="ml-3 grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark"
+          >
+            <FontAwesomeIcon className="h-6 text-light" icon={faChevronRight} />
+          </button>
+        </div>
+      </div>
+
       <div className="mt-4 flex flex-col justify-center">
-        {TOURS.map((tour, idx) => (
+        {tours.map((tour, idx) => (
           <TourCard tour={tour} key={idx} />
         ))}
       </div>
@@ -25,16 +68,20 @@ export default function AllTours() {
 }
 
 interface TourCardProps {
-  tour: Tour;
+  tour: TourWithDestination;
 }
 
 function TourCard({ tour }: TourCardProps) {
   return (
-    <div className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3">
+    <Link
+      href={`/tour/${tour.id}`}
+      className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3"
+    >
       <Image
+        id={tour.name}
         className="h-64 w-full object-cover"
-        src={tour.cardImage}
-        alt={tour.tourName}
+        src={`/destinations${tour.banner}`}
+        alt={tour.name}
         width={1000}
         height={1000}
       />
@@ -42,13 +89,15 @@ function TourCard({ tour }: TourCardProps) {
         <div className="flex items-center">
           <FontAwesomeIcon icon={faStar} className="h-6 w-6 text-primary" />
           <p className="text-md ml-1 font-light text-slate-500">
-            {tour.stars} Superb
+            {tour.rating} Superb
           </p>
         </div>
         <p className="mt-4 text-3xl leading-[95%] text-slate-700">
-          {tour.tourName}
+          {tour.name}
         </p>
-        <p className="text-xl font-light text-slate-500">{tour.location}</p>
+        <p className="text-xl font-light text-slate-500">
+          {tour.destination.place}
+        </p>
         <div className="mt-4 h-[1px] bg-slate-500"></div>
         <div className="mt-4 flex justify-center md:justify-start">
           <div className="mr-4 flex items-center">
@@ -57,7 +106,7 @@ function TourCard({ tour }: TourCardProps) {
               className="mr-1 h-5 w-5 text-primary"
             />
             <p className="text-md font-light text-slate-500">
-              {tour.days} Days
+              {tour.duration} Days
             </p>
           </div>
 
@@ -77,11 +126,11 @@ function TourCard({ tour }: TourCardProps) {
               className="mr-1 h-5 w-5 text-primary"
             />
             <p className="text-md font-light capitalize text-slate-500">
-              {tour.cartegory}
+              {tour.category}
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

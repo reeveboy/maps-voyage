@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import Head from "next/head";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
@@ -9,7 +10,17 @@ import Hero from "~/components/page/landing/Hero";
 import Reviews from "~/components/page/landing/Reviews";
 import Tours from "~/components/page/landing/Tours";
 
-export default function Home() {
+import type { Destination, Prisma } from "@prisma/client";
+type TourWithDestination = Prisma.TourGetPayload<{
+  include: { destination: true };
+}>;
+
+interface Props {
+  destinations: Destination[];
+  tours: TourWithDestination[];
+}
+
+export default function Home({ destinations, tours }: Props) {
   return (
     <>
       <Head>
@@ -21,8 +32,8 @@ export default function Home() {
         <Navbar />
         <Hero />
         <About />
-        <Destinations />
-        <Tours />
+        <Destinations destinations={destinations} />
+        <Tours tours={tours} />
         <Reviews />
         {/* <Blogs /> */}
         <Cta />
@@ -31,4 +42,29 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const prisma = new PrismaClient();
+  const destinations = await prisma.destination.findMany({
+    where: {
+      featured: true,
+    },
+    take: 4,
+  });
+
+  const tours = await prisma.tour.findMany({
+    include: {
+      destination: true,
+    },
+    where: {
+      featured: true,
+    },
+  });
+
+  await prisma.$disconnect();
+
+  return {
+    props: { destinations, tours },
+  };
 }

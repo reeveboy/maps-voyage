@@ -6,21 +6,21 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { Tour } from "~/pages/tour/[slug]";
+import type { TourWithDestination } from "~/types";
 
 interface HeroProps {
-  tour: Tour;
+  tour: TourWithDestination;
 }
 
 export default function Hero({ tour }: HeroProps) {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col">
-        <h2 className="text-4xl text-dark">{tour.tourName}</h2>
+        <h2 className="text-4xl text-dark">{tour.name}</h2>
         <div className="mt-2 flex items-center">
           <FontAwesomeIcon className="h-6 w-6 text-primary" icon={faStar} />
           <p className="ml-2 text-lg   font-light text-slate-600">
-            {tour.stars}
+            {tour.rating} Superb
           </p>
         </div>
         <div className="my-4 h-[2px] w-full bg-slate-600"></div>
@@ -28,7 +28,7 @@ export default function Hero({ tour }: HeroProps) {
           <div className="mx-2 flex flex-col items-center gap-2 md:flex-row">
             <FontAwesomeIcon className="h-5 w-5 text-primary" icon={faClock} />
             <p className="text-center text-lg font-light capitalize leading-[120%] text-slate-500 ">
-              {tour.days} days
+              {tour.duration} days
             </p>
           </div>
           <div className="mx-2 flex flex-col items-center gap-2 md:flex-row">
@@ -43,7 +43,7 @@ export default function Hero({ tour }: HeroProps) {
               icon={faBookmark}
             />
             <p className="text-center text-lg font-light capitalize leading-[120%] text-slate-500 ">
-              {tour.cartegory}
+              {tour.category}
             </p>
           </div>
           <div className="mx-2 flex flex-col items-center gap-2 md:flex-row">
@@ -52,7 +52,7 @@ export default function Hero({ tour }: HeroProps) {
               icon={faLocationDot}
             />
             <p className="text-center text-lg font-light capitalize leading-[120%] text-slate-500 ">
-              {tour.location}
+              {tour.destination.place}
             </p>
           </div>
         </div>

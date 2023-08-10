@@ -1,3 +1,6 @@
+import type { Destination } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
@@ -6,25 +9,15 @@ import FeaturedTours from "~/components/page/destination-detail/FeaturedTours";
 import ImageCarousel from "~/components/page/destination-detail/ImageCarousel";
 import Banner from "~/components/utility/Banner";
 
-const DESTINATION = {
-  name: "Shimla",
-  description: `
-  Welcome to Shimla, the "Queen of the Hills" and a breathtaking gem nestled in the mighty Himalayas of India. Shimla is a destination that seamlessly blends natural beauty, colonial charm, and an enchanting mountain atmosphere, making it a favorite among travelers seeking a serene and unforgettable experience.
+interface DestinationPageProps {
+  destination: Destination;
+  images: string[];
+}
 
-  As you set foot in Shimla, you'll be greeted by its crisp mountain air and panoramic vistas. The majestic snow-capped peaks that surround the city create a picturesque backdrop that will leave you in awe. Shimla's winding roads, lined with tall deodar trees, take you on a journey through its fascinating history and captivating landscapes.
-
-  Shimla, with its timeless beauty and serene ambiance, promises an escape from the chaotic world into a realm of tranquility and natural splendor. Prepare to be captivated by the charm of this mountain retreat, leaving with a heart full of cherished memories and a longing to return again.
-  `,
-  images: [
-    "https://images.unsplash.com/photo-1589564972271-05f2cf7e772f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1626621326088-dda793924b39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80",
-    "https://images.unsplash.com/photo-1593183981460-e9276b5a5587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=951&q=80",
-    "https://images.unsplash.com/photo-1619417889956-c701044fed86?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80",
-    "https://images.unsplash.com/photo-1609948544385-c52ee3564bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=858&q=80",
-  ],
-};
-
-export default function DestinationPage() {
+export default function DestinationPage({
+  destination,
+  images,
+}: DestinationPageProps) {
   return (
     <>
       <Head>
@@ -35,13 +28,13 @@ export default function DestinationPage() {
       <main>
         <Navbar />
         <Banner
-          img="https://images.unsplash.com/photo-1626621326300-2841cc0b346b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1229&q=80"
-          title={DESTINATION.name}
+          img={`/destinations${destination.banner}`}
+          title={destination.place}
         />
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 p-4 md:grid-cols-3">
           <div className="flex flex-col gap-4 md:col-span-2">
-            <Description description={DESTINATION.description} />
-            <ImageCarousel images={DESTINATION.images} />
+            <Description description={destination.description} />
+            <ImageCarousel images={images} />
           </div>
           <FeaturedTours />
         </div>
@@ -50,3 +43,23 @@ export default function DestinationPage() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const id = context.params?.slug;
+
+  if (id == null) throw new Error("Id undefined");
+
+  const prisma = new PrismaClient();
+
+  const destination = await prisma.destination.findUnique({
+    where: { id: parseInt(id as string) },
+  });
+
+  await prisma.$disconnect();
+
+  const images = destination?.images.split(";");
+
+  return {
+    props: { destination, images },
+  };
+};
