@@ -78,6 +78,7 @@ function TourCard({ tour }: TourCardProps) {
       className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3"
     >
       <Image
+        id={tour.name}
         className="h-64 w-full object-cover"
         src={`/destinations${tour.banner}`}
         alt={tour.name}
