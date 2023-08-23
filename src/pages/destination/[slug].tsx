@@ -1,16 +1,17 @@
-import type { Destination } from "@prisma/client";
 import { PrismaClient } from "@prisma/client";
 import type { GetServerSideProps } from "next";
 import Head from "next/head";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import Description from "~/components/page/destination-detail/Description";
-import FeaturedTours from "~/components/page/destination-detail/FeaturedTours";
+import DestinationTours from "~/components/page/destination-detail/DestinationTours";
 import ImageCarousel from "~/components/page/destination-detail/ImageCarousel";
+import BookForm from "~/components/page/tour-detail/BookForm";
 import Banner from "~/components/utility/Banner";
+import type { DestinationWithTours } from "~/types";
 
 interface DestinationPageProps {
-  destination: Destination;
+  destination: DestinationWithTours;
   images: string[];
 }
 
@@ -35,8 +36,10 @@ export default function DestinationPage({
           <div className="flex flex-col gap-4 md:col-span-2">
             <Description description={destination.description} />
             <ImageCarousel images={images} />
+            <DestinationTours destinationWithTours={destination} />
           </div>
-          <FeaturedTours />
+          <BookForm />
+          {/* <FeaturedTours /> */}
         </div>
         <Footer />
       </main>
@@ -53,6 +56,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const destination = await prisma.destination.findUnique({
     where: { id: parseInt(id as string) },
+    include: {
+      tours: true,
+    },
   });
 
   await prisma.$disconnect();

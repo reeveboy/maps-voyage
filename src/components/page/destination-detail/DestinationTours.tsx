@@ -1,66 +1,26 @@
-import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
-  faChevronLeft,
-  faChevronRight,
   faClock,
   faStar,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import type { TourWithDestination } from "~/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Tour } from "@prisma/client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import type { DestinationWithTours, TourWithDestination } from "~/types";
 
-interface AllToursProps {
-  allTours: TourWithDestination[];
+interface DestinationToursProps {
+  destinationWithTours: DestinationWithTours;
 }
 
-export default function AllTours({ allTours }: AllToursProps) {
-  const [tours, setTours] = useState(allTours.slice(0, 10)); // [0, 10
-  const [page, setPage] = useState(1);
-  const lastPage = Math.ceil(allTours.length / 10);
-
-  useEffect(() => {
-    setTours(allTours.slice((page - 1) * 10, page * 10));
-  }, [page, allTours]);
-
-  const prevPage = () => {
-    setPage((prev) => (prev == 1 ? prev : prev - 1));
-  };
-
-  const nextPage = () => {
-    setPage((prev) => (prev == lastPage ? prev : prev + 1));
-  };
-
+export default function DestinationTours({
+  destinationWithTours,
+}: DestinationToursProps) {
   return (
-    <div className="my-8 flex flex-col px-4">
-      <div className="mt-3 flex items-center justify-between">
-        <p className="text-2xl font-light text-dark">
-          Showing {allTours.length} Results
-        </p>
-        <div className="flex">
-          <button
-            onClick={prevPage}
-            className="grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark"
-          >
-            <FontAwesomeIcon className="h-6 text-light" icon={faChevronLeft} />
-          </button>
-          <div className="ml-3 grid h-12 w-12 place-items-center rounded-full bg-slate-300">
-            <p className="text-lg text-slate-600">{page}</p>
-          </div>
-          <button
-            onClick={nextPage}
-            className="ml-3 grid h-12 w-12 place-items-center rounded-full bg-primary hover:bg-primaryDark"
-          >
-            <FontAwesomeIcon className="h-6 text-light" icon={faChevronRight} />
-          </button>
-        </div>
-      </div>
-
+    <div>
       <div className="mt-4 flex flex-col justify-center">
-        {tours.map((tour, idx) => (
-          <TourCard tour={tour} key={idx} />
+        {destinationWithTours.tours.map((tour, idx) => (
+          <TourCard tour={tour} place={destinationWithTours.place} key={idx} />
         ))}
       </div>
     </div>
@@ -68,10 +28,11 @@ export default function AllTours({ allTours }: AllToursProps) {
 }
 
 interface TourCardProps {
-  tour: TourWithDestination;
+  tour: Tour;
+  place: string;
 }
 
-function TourCard({ tour }: TourCardProps) {
+function TourCard({ tour, place }: TourCardProps) {
   return (
     <Link
       href={`/tour/${tour.id}`}
@@ -95,9 +56,7 @@ function TourCard({ tour }: TourCardProps) {
         <p className="mt-4 text-3xl leading-[95%] text-slate-700">
           {tour.name}
         </p>
-        <p className="text-xl font-light text-slate-500">
-          {tour.destination.place}
-        </p>
+        <p className="text-xl font-light text-slate-500">{place}</p>
         <div className="mt-4 h-[1px] bg-slate-500"></div>
         <div className="mt-4 flex justify-center md:justify-start">
           <div className="mr-4 flex items-center">

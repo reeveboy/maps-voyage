@@ -7,3 +7,7 @@ export type TourWithDestination = Prisma.TourGetPayload<{
 export type TourWithDestinationAndDays = Prisma.TourGetPayload<{
   include: { destination: true; tourDays: true };
 }>;
+
+export type DestinationWithTours = Prisma.DestinationGetPayload<{
+  include: { tours: true };
+}>;
