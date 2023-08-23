@@ -2,6 +2,7 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Disclosure, Transition } from "@headlessui/react";
 import classNames from "classnames";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -27,10 +28,7 @@ export default function Navbar() {
         )}
       >
         <Link href={"/"} className="text-center ">
-          <span className="text-3xl font-black leading-5 text-light">
-            <p>Maps</p>
-            <p>Voyage</p>
-          </span>
+          <Image src={"/favicon.ico"} alt="logo" width={50} height={50} />
         </Link>
 
         <div className="hidden items-center md:flex">

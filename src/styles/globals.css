@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: "Londrina Solid", cursive;
+  /* font-family: "Londrina Solid", cursive; */
   background-color: #f4f4f4;
+  font-family: "Roboto", sans-serif;
 }

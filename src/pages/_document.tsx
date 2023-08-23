@@ -11,10 +11,9 @@ export default function Document() {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Shadows+Into+Light&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Roboto:wght@100;300;400;500;700;900&family=Shadows+Into+Light&display=swap"
           rel="stylesheet"
         />
-        {/* <link rel="icon" href="/owl.png" /> */}
       </Head>
       <body>
         <Main />
