@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBookmark,
@@ -13,17 +12,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface AllToursProps {
-  allTours: TourWithDestination[];
+  filteredTours: TourWithDestination[];
 }
 
-export default function AllTours({ allTours }: AllToursProps) {
-  const [tours, setTours] = useState(allTours.slice(0, 10)); // [0, 10
+export default function AllTours({ filteredTours }: AllToursProps) {
+  const [tours, setTours] = useState(filteredTours.slice(0, 10)); // [0, 10
   const [page, setPage] = useState(1);
-  const lastPage = Math.ceil(allTours.length / 10);
+  const lastPage = Math.ceil(filteredTours.length / 10);
 
   useEffect(() => {
-    setTours(allTours.slice((page - 1) * 10, page * 10));
-  }, [page, allTours]);
+    setTours(filteredTours.slice((page - 1) * 10, page * 10));
+  }, [page, filteredTours]);
 
   const prevPage = () => {
     setPage((prev) => (prev == 1 ? prev : prev - 1));
@@ -37,7 +36,7 @@ export default function AllTours({ allTours }: AllToursProps) {
     <div className="my-8 flex flex-col px-4">
       <div className="mt-3 flex items-center justify-between">
         <p className="text-2xl font-light text-dark">
-          Showing {allTours.length} Results
+          Showing {filteredTours.length} Results
         </p>
         <div className="flex">
           <button
@@ -77,6 +76,7 @@ function TourCard({ tour }: TourCardProps) {
       href={`/tour/${tour.id}`}
       className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3"
     >
+      {/*  eslint-disable-next-line @next/next/no-img-element */}
       <img
         id={tour.name}
         className="h-64 w-full object-cover"

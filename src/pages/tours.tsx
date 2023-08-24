@@ -1,4 +1,5 @@
-import { Destination, PrismaClient } from "@prisma/client";
+import type { Destination } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import type { GetStaticProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
@@ -19,6 +20,14 @@ export default function Tours({ tours, destinations }: ToursPageProps) {
   const [selectedDestination, setSelectedDestination] =
     useState<Destination | null>(null);
 
+  const filteredTours = selectedDestination
+    ? tours.filter(
+        (tour) =>
+          tour.destination.place.toLowerCase() ===
+          selectedDestination.place.toLowerCase()
+      )
+    : tours;
+
   return (
     <>
       <Head>
@@ -34,7 +43,7 @@ export default function Tours({ tours, destinations }: ToursPageProps) {
         />
         <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-3">
           <div className="md:col-span-2">
-            <AllTours allTours={tours} />
+            <AllTours filteredTours={filteredTours} />
           </div>
           <div className="flex flex-col">
             <SearchBox

@@ -5,9 +5,9 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Tour } from "@prisma/client";
+import type { Tour } from "@prisma/client";
 import Link from "next/link";
-import type { DestinationWithTours, TourWithDestination } from "~/types";
+import type { DestinationWithTours } from "~/types";
 
 interface DestinationToursProps {
   destinationWithTours: DestinationWithTours;
@@ -38,6 +38,7 @@ function TourCard({ tour, place }: TourCardProps) {
       href={`/tour/${tour.id}`}
       className="my-2 grid w-full grid-cols-1 bg-white shadow-md md:grid-cols-3"
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         id={tour.name}
         className="h-64 w-full object-cover"

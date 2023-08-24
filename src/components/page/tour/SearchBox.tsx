@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Combobox } from "@headlessui/react";
 import type { Destination } from "@prisma/client";
+import classNames from "classnames";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 
@@ -40,15 +44,28 @@ export default function SearchBox({
               className="text-md mt-2 bg-slate-200 px-5 py-3 text-slate-600"
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Where to?"
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              displayValue={(destination) => destination?.place}
             />
-            <Combobox.Options className="mt-2 bg-slate-200 ">
+            <Combobox.Options className="mt-2 bg-slate-200">
               {filteredDestinations.map((destination) => (
-                <Combobox.Option
-                  className="text-md mb-2 cursor-pointer bg-slate-200 px-5 py-2 text-slate-600 hover:bg-primary hover:text-light"
-                  key={destination.id}
-                  value={destination.place}
-                >
-                  {destination.place}
+                <Combobox.Option key={destination.id} value={destination}>
+                  {({ active, selected }) => (
+                    <li
+                      className={classNames(
+                        "text-md mb-2 flex cursor-pointer items-center justify-between px-5 py-2 hover:bg-primary hover:text-light",
+                        active
+                          ? "bg-primary text-light"
+                          : "bg-slate-200 text-slate-600"
+                      )}
+                    >
+                      {destination.place}
+                      {selected && (
+                        <FontAwesomeIcon className="h-3 w-3" icon={faCheck} />
+                      )}
+                    </li>
+                  )}
                 </Combobox.Option>
               ))}
             </Combobox.Options>

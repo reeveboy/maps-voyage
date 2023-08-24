@@ -1,6 +1,6 @@
 import { faCaretDown, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Disclosure, Transition } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import classNames from "classnames";
 
 export default function FilterBox() {
