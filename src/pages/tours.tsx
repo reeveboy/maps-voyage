@@ -1,6 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { Destination, PrismaClient } from "@prisma/client";
 import type { GetStaticProps } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import AllTours from "~/components/page/tour/AllTours";
@@ -11,9 +12,13 @@ import type { TourWithDestination } from "~/types";
 
 interface ToursPageProps {
   tours: TourWithDestination[];
+  destinations: Destination[];
 }
 
-export default function Tours({ tours }: ToursPageProps) {
+export default function Tours({ tours, destinations }: ToursPageProps) {
+  const [selectedDestination, setSelectedDestination] =
+    useState<Destination | null>(null);
+
   return (
     <>
       <Head>
@@ -32,7 +37,11 @@ export default function Tours({ tours }: ToursPageProps) {
             <AllTours allTours={tours} />
           </div>
           <div className="flex flex-col">
-            <SearchBox />
+            <SearchBox
+              selectedDestination={selectedDestination}
+              setSelectedDestination={setSelectedDestination}
+              destinations={destinations}
+            />
             <FilterBox />
           </div>
         </div>
@@ -48,9 +57,12 @@ export const getStaticProps: GetStaticProps = async () => {
     include: { destination: true },
     orderBy: { name: "asc" },
   });
+  const destinations = await prisma.destination.findMany({
+    orderBy: { place: "asc" },
+  });
   await prisma.$disconnect();
 
   return {
-    props: { tours },
+    props: { tours, destinations },
   };
 };
