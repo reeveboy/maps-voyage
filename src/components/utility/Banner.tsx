@@ -14,6 +14,7 @@ export default function Banner(props: BannerProps) {
         alt=""
         width={1920}
         height={1080}
+        quality={100}
       />
       <div className="relative flex items-center justify-center px-4 py-12">
         <div className="h-[2px] w-12 bg-light"></div>

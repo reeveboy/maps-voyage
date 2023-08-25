@@ -70,7 +70,7 @@ export default function SearchBox({
               ))}
             </Combobox.Options>
           </Combobox>
-          <button className="text-md mt-2 bg-primary py-3 text-light shadow-md transition-colors hover:bg-primaryDark focus:bg-primaryDark">
+          <button className="text-md mt-2 bg-primary py-3 text-light transition-colors hover:bg-primaryDark focus:bg-primaryDark">
             SEARCH
           </button>
         </div>

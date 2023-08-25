@@ -37,10 +37,7 @@ export default function Tours({ tours, destinations }: ToursPageProps) {
       </Head>
       <main>
         <Navbar />
-        <Banner
-          img="https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=903&q=80"
-          title="Tours"
-        />
+        <Banner img="/banner.jpg" title="Tours" />
         <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-3">
           <div className="md:col-span-2">
             <AllTours filteredTours={filteredTours} />
@@ -63,11 +60,24 @@ export default function Tours({ tours, destinations }: ToursPageProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const prisma = new PrismaClient();
   const tours = await prisma.tour.findMany({
-    include: { destination: true },
     orderBy: { name: "asc" },
+    select: {
+      id: true,
+      name: true,
+      banner: true,
+      rating: true,
+      duration: true,
+      groupSize: true,
+      category: true,
+      destination: { select: { place: true } },
+    },
   });
   const destinations = await prisma.destination.findMany({
     orderBy: { place: "asc" },
+    select: {
+      id: true,
+      place: true,
+    },
   });
   await prisma.$disconnect();
 
