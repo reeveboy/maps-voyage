@@ -20,12 +20,12 @@ const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
-    partialVisibilityGutter: 30,
+    partialVisibilityGutter: 40,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    partialVisibilityGutter: 10,
+    partialVisibilityGutter: 20,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -57,6 +57,13 @@ export default function Tours({ tours }: TourProps) {
           <TourCard key={index} tour={tour} />
         ))}
       </Carousel>
+      <div className="mx-auto">
+        <Link href={"/tours"}>
+          <button className="mt-4 border-2 border-primary px-12 py-3 uppercase text-primary transition-colors hover:border-primaryDark hover:bg-primaryDark hover:text-light focus:border-primaryDark focus:bg-primaryDark focus:text-light">
+            More Tours!
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
