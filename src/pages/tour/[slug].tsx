@@ -31,7 +31,7 @@ export default function TourPage({ tour, images }: TourPageProps) {
       </Head>
       <main>
         <Navbar />
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 p-4 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 p-4 md:grid-cols-3">
           <div className="flex flex-col gap-4 md:col-span-2">
             <Hero tour={tour} />
             <Carousel images={images} />

@@ -38,7 +38,7 @@ export default function Navbar() {
               <Link
                 key={idx}
                 className={classNames(
-                  "ml-8 text-lg uppercase",
+                  "ml-8 text-lg uppercase transition-colors duration-200 hover:text-light",
                   router.pathname === item.href
                     ? "font-normal text-light"
                     : "font-light text-slate-200"
