@@ -1,6 +1,8 @@
+import type { Destination } from "@prisma/client";
 import { PrismaClient } from "@prisma/client";
 import type { GetStaticProps } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import Footer from "~/components/Footer";
 import Navbar from "~/components/Navbar";
 import AllTours from "~/components/page/tour/AllTours";
@@ -11,9 +13,21 @@ import type { TourWithDestination } from "~/types";
 
 interface ToursPageProps {
   tours: TourWithDestination[];
+  destinations: Destination[];
 }
 
-export default function Tours({ tours }: ToursPageProps) {
+export default function Tours({ tours, destinations }: ToursPageProps) {
+  const [selectedDestination, setSelectedDestination] =
+    useState<Destination | null>(null);
+
+  const filteredTours = selectedDestination
+    ? tours.filter(
+        (tour) =>
+          tour.destination.place.toLowerCase() ===
+          selectedDestination.place.toLowerCase()
+      )
+    : tours;
+
   return (
     <>
       <Head>
@@ -29,10 +43,14 @@ export default function Tours({ tours }: ToursPageProps) {
         />
         <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-3">
           <div className="md:col-span-2">
-            <AllTours allTours={tours} />
+            <AllTours filteredTours={filteredTours} />
           </div>
           <div className="flex flex-col">
-            <SearchBox />
+            <SearchBox
+              selectedDestination={selectedDestination}
+              setSelectedDestination={setSelectedDestination}
+              destinations={destinations}
+            />
             <FilterBox />
           </div>
         </div>
@@ -48,9 +66,12 @@ export const getStaticProps: GetStaticProps = async () => {
     include: { destination: true },
     orderBy: { name: "asc" },
   });
+  const destinations = await prisma.destination.findMany({
+    orderBy: { place: "asc" },
+  });
   await prisma.$disconnect();
 
   return {
-    props: { tours },
+    props: { tours, destinations },
   };
 };

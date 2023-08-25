@@ -12,17 +12,17 @@ export default function Virtures() {
                 Our Vision
               </h3>
             </div>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               At the heart of our operations lies a vision to revolutionize the
               travel industry by providing extraordinary adventures at an
               affordable price.
             </p>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               We understand that exploring the world shouldn&apos;t be limited
               to a privileged few, which is why we strive to make our services
               accessible to everyone.
             </p>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               We firmly believe that cost should never compromise the quality of
               service, and we are committed to offering world-class experiences
               that exceed your expectations.
@@ -36,7 +36,7 @@ export default function Virtures() {
                 Our Commitment
               </h3>
             </div>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               Whether it&apos;s exploring the untouched beauty of remote
               islands, immersing in the vibrant cultures of local communities,
               or embarking on thrilling adventures in unexplored landscapes, we
@@ -64,12 +64,12 @@ export default function Virtures() {
                 Our Approach
               </h3>
             </div>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               We understand that every traveler is unique, with distinct
               preferences and desires. That&apos;s why we take a personalized
               approach to crafting your travel itinerary.
             </p>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               From selecting the perfect destinations to arranging comfortable
               accommodations and transportation, we handle all the details so
               that you can relax and fully immerse yourself in the magic of your
@@ -82,16 +82,16 @@ export default function Virtures() {
               <p className="h-[4px] w-16 bg-primary"></p>
               <h3 className="ml-2 text-4xl uppercase text-primary">Our Team</h3>
             </div>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               We are a group of passionate travel enthusiasts who share a deep
               love for exploration and a commitment to exceptional service.
             </p>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               Our knowledgeable and friendly travel consultants are always
               available to assist you, providing expert guidance and
               recommendations to create the perfect travel experience for you.
             </p>
-            <p className="mt-2 text-lg font-light leading-[120%] text-slate-600">
+            <p className="mt-2 text-lg font-light leading-[130%] text-slate-600">
               With their extensive expertise and dedication to customer
               satisfaction, our team ensures that your journey with us is
               seamless, unforgettable, and filled with delightful surprises.

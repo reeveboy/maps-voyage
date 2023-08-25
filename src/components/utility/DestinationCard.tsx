@@ -21,14 +21,14 @@ export default function DestinationCard({
     <Link
       href={`/destination/${id}`}
       className={classNames(
-        "relative h-52 w-full bg-black/60",
+        "group relative h-52 w-full overflow-hidden bg-black/60",
         index % 8 == 0 || index % 8 == 1 || index % 8 == 5 || index % 8 == 6
           ? "md:row-span-2 md:h-[500px]"
           : "md:col-span-2 md:h-full"
       )}
     >
       <Image
-        className="absolute h-full w-full object-cover mix-blend-overlay"
+        className="absolute h-full w-full object-cover mix-blend-overlay transition-transform duration-300 group-hover:scale-105"
         src={`/destinations${banner}`}
         alt={place}
         width={1000}
@@ -41,8 +41,11 @@ export default function DestinationCard({
             {numberOfTours} Tours
           </p>
         </div>
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-light">
-          <FontAwesomeIcon className="h-6 text-dark" icon={faChevronRight} />
+        <div className="grid h-12 w-12 place-items-center rounded-full bg-light transition-colors duration-150 group-hover:bg-primary">
+          <FontAwesomeIcon
+            className="h-6 text-dark transition-colors duration-150 group-hover:text-light"
+            icon={faChevronRight}
+          />
         </div>
       </div>
     </Link>
